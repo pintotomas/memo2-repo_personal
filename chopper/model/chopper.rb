@@ -9,7 +9,8 @@ class Chopper
   def sum(num_array)
     return 'vacio' if num_array.empty?
 
-    text_representation_of_numbers = { '1' => 'uno', '4' => 'cuatro', '8' => 'ocho' }
+    text_representation_of_numbers = { '1' => 'uno', '4' => 'cuatro',
+                                       '8' => 'ocho', '9' => 'nueve' }
     sum = num_array.inject(:+)
     sum_array = sum.to_s.split('')
     sum_string = []
