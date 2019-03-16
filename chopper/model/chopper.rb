@@ -6,7 +6,9 @@ class Chopper
     -1
   end
 
-  def sum(_num_array)
-    'vacio'
+  def sum(num_array)
+    return 'vacio' if num_array.empty?
+
+    'uno'
   end
 end
