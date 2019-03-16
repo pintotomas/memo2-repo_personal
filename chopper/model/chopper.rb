@@ -13,6 +13,8 @@ class Chopper
     sum = num_array.inject(:+)
     sum_array = sum.to_s.split('')
     sum_string = []
+    return 'demasiado grande' if sum_array.length > 2
+
     sum_array.each do |num|
       string_interpretation = text_representation_of_numbers[num]
       puts string_interpretation
