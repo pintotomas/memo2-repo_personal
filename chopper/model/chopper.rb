@@ -1,6 +1,7 @@
 class Chopper
-  def chop(position, array) # rubocop:disable Lint/UnusedMethodArgument
-    return 0 unless array.empty?
+  def chop(position, array)
+    number_position = array.index(position)
+    return number_position if number_position
 
     -1
   end
