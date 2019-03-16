@@ -40,11 +40,11 @@ describe 'Chopper' do
   it 'sum de [50,49] deberia ser nueve,nueve' do
     expect(chopper.sum([50, 49])).to eq 'nueve,nueve'
   end
-=begin
+
   it 'sum de [0,0] deberia ser cero' do
     expect(chopper.sum([0, 0])).to eq 'cero'
   end
-
+=begin
   it 'sum de [15] deberia ser uno,cinco' do
     expect(chopper.sum([15])).to eq 'uno,cinco'
   end
