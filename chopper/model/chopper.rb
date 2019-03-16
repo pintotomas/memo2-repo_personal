@@ -11,7 +11,7 @@ class Chopper
 
     text_representation_of_numbers = { '1' => 'uno', '4' => 'cuatro',
                                        '8' => 'ocho', '9' => 'nueve',
-                                       '0' => 'cero' }
+                                       '0' => 'cero', '5' => 'cinco' }
     sum = num_array.inject(:+)
     sum_array = sum.to_s.split('')
     sum_string = []
