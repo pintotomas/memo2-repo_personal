@@ -5,8 +5,8 @@ require_relative 'creador_cartas.rb'
 class EnvidoGame
   def run(arguments)
     cards_to_play = Factory.create_cards(arguments)
-    envido = Envido.new
-    envido.play_cards(cards_to_play)
+    envido = Envido.new(cards_to_play)
+    envido.play_cards
   end
 end
 

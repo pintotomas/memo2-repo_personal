@@ -2,10 +2,10 @@ require 'rspec'
 require_relative '../model/envido'
 
 describe 'Envido' do
-  let(:envido) { Envido.new }
+  let(:envido) { Envido.new([]) }
 
   it 'test base ' do
-    expect(envido.play_cards([])).to eq -1 # rubocop:disable Lint/AmbiguousOperator
+    expect(envido.calculate).to eq -1 # rubocop:disable Lint/AmbiguousOperator
   end
 
 =begin # rubocop:disable all

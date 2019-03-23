@@ -3,6 +3,7 @@ require_relative '../model/carta.rb'
 class Factory
   def self.create_cards(cards_represented_in_string)
     palos = { 'p' => 'basto', 'c' => 'copa',
+              'x' => 'diamante', 's' => 'corazones',
               'o' => 'oro', 'e' => 'espada' }
 
     cards = cards_represented_in_string.split(',')
