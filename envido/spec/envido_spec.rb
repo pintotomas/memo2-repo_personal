@@ -1,11 +1,17 @@
 require 'rspec'
 require_relative '../model/envido'
+require_relative '../model/carta'
+require_relative '../model/exceptions'
 
 describe 'Envido' do
-  let(:envido) { Envido.new([]) }
+  # let(:envido) { Envido.new([]) }
 
-  it 'test base ' do
-    expect(envido.calculate).to eq -1 # rubocop:disable Lint/AmbiguousOperator
+  it 'test palo invalido' do
+    cinco_de_corazones = Carta.new('corazones', 5)
+    tres_de_oro = Carta.new('oro', 3)
+    doce_de_basto = Carta.new('basto', 12)
+    array_cartas = [cinco_de_corazones, tres_de_oro, doce_de_basto]
+    expect { Envido.new(array_cartas) }.to raise_error(PaloError)
   end
 
 =begin # rubocop:disable all
