@@ -6,7 +6,9 @@ class EnvidoGame
   def run(arguments)
     cards_to_play = Factory.create_cards(arguments)
     envido = Envido.new(cards_to_play)
-    envido.play_cards
+    envido.calculate
+  rescue PaloError
+    puts 'El palo no es valido'
   end
 end
 
