@@ -9,6 +9,8 @@ class EnvidoGame
     envido.calculate
   rescue CartaConPaloInvalidoError
     puts 'El palo no es valido'
+  rescue CartaConValorInvalidoError
+    puts 'El numero no es valido'
   end
 end
 
