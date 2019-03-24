@@ -7,7 +7,7 @@ class EnvidoGame
     cards_to_play = Factory.create_cards(arguments)
     envido = Envido.new(cards_to_play)
     result = envido.calcular_tanto
-    puts "Envido: "+result.to_s
+    puts 'Envido: ' + result.to_s
   rescue CartaConPaloInvalidoError
     puts 'El palo no es valido'
   rescue CartaConValorInvalidoError
