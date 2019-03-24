@@ -1,9 +1,6 @@
 #!/usr/bin/ruby
 require_relative 'exceptions.rb'
 class Envido
-  def calculate
-    -1
-  end
 
   def initialize(card_array)
     valid_palos = %w[basto copa oro espada]
@@ -14,6 +11,10 @@ class Envido
 
       @cards_on_game = card_array
     end
+  end
+
+  def calcular_tanto
+    3
   end
 
   attr_reader :cards_on_game
