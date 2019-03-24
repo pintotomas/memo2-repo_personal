@@ -7,7 +7,7 @@ class EnvidoGame
     cards_to_play = Factory.create_cards(arguments)
     envido = Envido.new(cards_to_play)
     envido.calculate
-  rescue PaloError
+  rescue CartaConPaloInvalidoError
     puts 'El palo no es valido'
   end
 end

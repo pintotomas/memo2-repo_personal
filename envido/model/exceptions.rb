@@ -1,5 +1,5 @@
-class PaloError < StandardError
+class CartaConPaloInvalidoError < StandardError
 end
 
-class ValorError < StandardError
+class CartaConValorInvalidoError < StandardError
 end

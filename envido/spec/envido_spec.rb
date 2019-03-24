@@ -6,19 +6,21 @@ require_relative '../model/exceptions'
 describe 'Envido' do
   # let(:envido) { Envido.new([]) }
 
-  it 'test palo invalido' do
+  it 'envido con una carta con palo invalido' do
     cinco_de_corazones = Carta.new('corazones', 5)
     tres_de_oro = Carta.new('oro', 3)
     doce_de_basto = Carta.new('basto', 12)
     array_cartas = [cinco_de_corazones, tres_de_oro, doce_de_basto]
-    expect { Envido.new(array_cartas) }.to raise_error(PaloError)
+    expect { Envido.new(array_cartas) }.to raise_error(CartaConPaloInvalidoError)
   end
-
+  it 'envido con una carta con valor invalido' do
+    ocho_de_basto = Carta.new('basto', 8)
+    tres_de_oro = Carta.new('oro', 3)
+    doce_de_basto = Carta.new('basto', 12)
+    array_cartas = [ocho_de_basto, tres_de_oro, doce_de_basto]
+    expect { Envido.new(array_cartas) }.to raise_error(CartaConValorInvalidoError)
+  end
 =begin # rubocop:disable all
-  it 'chop de 3 y [3] deberia ser 0' do
-    expect(chopper.chop(3, [3])).to eq 0
-  end
-
   it 'chop de 3 y [0,7,3] deberia ser 2' do
     expect(chopper.chop(3, [0,7,3])).to eq 2
   end
