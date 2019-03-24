@@ -13,7 +13,7 @@ class Envido
   end
 
   def calcular_tanto
-    3
+    cards_on_game.max_by(&:valor).valor
   end
 
   attr_reader :cards_on_game
