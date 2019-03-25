@@ -23,10 +23,10 @@ describe 'Envido' do
   end
   it 'envido con una carta con palo invalido' do
     mano = ColeccionCartas.new([Carta.new('x', 5), Carta.new('oro', 3), Carta.new('basto', 12)])
-    expect { Envido.new(mano) }.to raise_error(CartaConPaloInvalidoError)
+    expect { Envido.new(mano) }.to raise_error(PaloInvalidoError)
   end
   it 'envido con una carta con valor invalido' do
     mano = ColeccionCartas.new([Carta.new('basto', 8), Carta.new('oro', 3), Carta.new('basto', 12)])
-    expect { Envido.new(mano) }.to raise_error(CartaConValorInvalidoError)
+    expect { Envido.new(mano) }.to raise_error(ValorInvalidoError)
   end
 end
