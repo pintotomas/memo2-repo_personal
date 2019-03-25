@@ -11,6 +11,5 @@ class ColeccionCartas
     cards.max_by { |v| freq_palos[v] }.palo
   end
 
-
   attr_reader :cards
 end
