@@ -28,3 +28,15 @@ class ColeccionCartas
 
   attr_reader :cards
 end
+
+class ColeccionCartasTruco < ColeccionCartas
+  def calcular_puntos_de_envido
+    return maximo_valor unless length > 1
+
+    tanto = 0
+    cards.each do |carta|
+      tanto += carta.envido_value
+    end
+    tanto
+  end
+end

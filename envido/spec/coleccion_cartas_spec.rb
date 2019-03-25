@@ -19,4 +19,9 @@ describe 'Coleccion de cartas' do
     coleccion = ColeccionCartas.new([Carta.new('e', 10), Carta.new('e', 11), Carta.new('e', 12)])
     expect(coleccion.maximo_valor).to eq 12
   end
+  it 'Valor de envido con una sola carta' do
+    a = [CartaTruco.new('espada', 7)]
+    mano_truco = ColeccionCartasTruco.new(a)
+    expect(mano_truco.calcular_puntos_de_envido).to eq 7
+  end
 end
