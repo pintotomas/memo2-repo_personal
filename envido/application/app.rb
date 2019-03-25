@@ -5,14 +5,14 @@ require_relative 'creador_cartas.rb'
 
 class EnvidoGame
   def run(arguments)
-    cards_to_play = Factory.create_cards(arguments)
+    cards_to_play = Factory.create_cards_for_envido(arguments)
     card_collection = ColeccionCartas.new(cards_to_play)
     envido = Envido.new(card_collection)
     result = envido.calcular_tanto
     puts 'Envido: ' + result.to_s
-  rescue CartaConPaloInvalidoError
+  rescue PaloInvalidoError
     puts 'El palo no es valido'
-  rescue CartaConValorInvalidoError
+  rescue ValorInvalidoError
     puts 'El numero no es valido'
   end
 end
