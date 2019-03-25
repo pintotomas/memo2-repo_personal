@@ -6,7 +6,7 @@ require_relative 'creador_cartas.rb'
 class EnvidoGame
   def run(arguments)
     cards_to_play = Factory.create_cards_for_envido(arguments)
-    card_collection = ColeccionCartas.new(cards_to_play)
+    card_collection = ColeccionCartasTruco.new(cards_to_play)
     envido = Envido.new(card_collection)
     result = envido.calcular_tanto
     puts 'Envido: ' + result.to_s
