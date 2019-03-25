@@ -21,4 +21,10 @@ class CartaTruco < Carta
     raise PaloInvalidoError unless valid_palos.include? palo
     raise ValorInvalidoError unless valid_valores.include? valor
   end
+
+  def envido_value
+    return valor unless valor >= 10
+
+    0
+  end
 end

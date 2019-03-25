@@ -4,7 +4,7 @@ set -e
 
 
 function check() {
-  ruby app.rb "$2"  | grep "$3" >/dev/null && echo "$1:ok" || echo "$1:error"            
+  ruby app.rb "$2"  | grep "$3" >/dev/null && echo "$1:ok" || echo "$1:$2"            
 }   
 
 check '01' '03p,03o,03e' 'Envido: 3'
