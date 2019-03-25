@@ -42,4 +42,8 @@ class ColeccionCartasTruco < ColeccionCartas
     selected_cards = cards.select { |e| e.palo == palo }
     ColeccionCartasTruco.new(selected_cards)
   end
+
+  def card_with_max_value
+    cards.max_by(&:envido_value)
+  end
 end
