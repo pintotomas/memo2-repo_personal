@@ -35,7 +35,7 @@ class ColeccionCartasTruco < ColeccionCartas
     (0..primeras_n_cartas - 1).each do |i|
       tanto += cards[i].envido_value
     end
-    tanto + 20
+    tanto
   end
 
   def obtener_cartas_con_palo(palo)

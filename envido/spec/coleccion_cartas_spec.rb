@@ -22,11 +22,11 @@ describe 'Coleccion de cartas' do
   it 'Valor de envido con dos cartas del mismo palo y mayores a 10' do
     c = [CartaTruco.new('espada', 10), CartaTruco.new('espada', 11)]
     mano_truco = ColeccionCartasTruco.new(c)
-    expect(mano_truco.calcular_puntos_de_envido).to eq 20
+    expect(mano_truco.calcular_puntos_de_envido).to eq 0
   end
   it 'Valor de envido con dos cartas del mismo palo, una mayor a 10 y otra menor' do
     c = [CartaTruco.new('espada', 7), CartaTruco.new('espada', 11)]
     mano_truco = ColeccionCartasTruco.new(c)
-    expect(mano_truco.calcular_puntos_de_envido).to eq 27
+    expect(mano_truco.calcular_puntos_de_envido).to eq 7
   end
 end

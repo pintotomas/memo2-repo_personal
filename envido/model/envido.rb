@@ -15,12 +15,14 @@ class Envido
     cards_to_play = cards_on_game.obtener_cartas_con_palo(palo_mayor_aparicion)
     return cards_on_game.card_with_max_value.envido_value unless cards_to_play.length > 1
 
+    tanto_default = 20
     # Si tenemos 3 cartas del mismo palo solo tener en cuenta las 2 con mayor valor de envido
-    if cards_to_play.length == 3
-      cards_to_play.sort_by_envido_value.calcular_puntos_de_envido(cartas_a_tener_en_cuenta)
-    else
-      cards_to_play.calcular_puntos_de_envido
-    end
+    tanto = if cards_to_play.length == 3
+              cards_to_play.sort_by_envido_value.calcular_puntos_de_envido(cartas_a_tener_en_cuenta)
+            else
+              cards_to_play.calcular_puntos_de_envido
+            end
+    tanto + tanto_default
   end
 
   attr_reader :cards_on_game
