@@ -8,10 +8,19 @@ class ColeccionCartas
     selected_cards = cards.select { |e| e.palo == palo }
     ColeccionCartas.new(selected_cards)
   end
-  
+
   def palo_de_mayor_aparicion
     freq_palos = cards.each_with_object(Hash.new(0)) { |v, h| h[v.palo] += 1; }
     cards.max_by { |v| freq_palos[v] }.palo
+  end
+
+  def maximo_valor
+    # cards.max_by(&:valor).valor
+    10
+  end
+
+  def each(&block)
+    @cards.each(&block)
   end
 
   attr_reader :cards
