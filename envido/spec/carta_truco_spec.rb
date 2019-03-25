@@ -13,4 +13,8 @@ describe 'CartaTruco' do
     c1 = CartaTruco.new('basto', 4)
     expect(c1.envido_value). to eq 4
   end
+  it 'Valor de envido de una carta con valor mayor o igual a 10 es 0' do
+    c2 = CartaTruco.new('basto', 10)
+    expect(c2.envido_value). to eq 0
+  end
 end
