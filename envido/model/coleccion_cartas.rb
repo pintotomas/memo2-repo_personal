@@ -4,8 +4,11 @@ class ColeccionCartas
     @cards = array_cartas
   end
 
-  def obtener_cartas_con_palo(palo); end
-
+  def obtener_cartas_con_palo(palo)
+    selected_cards = cards.select { |e| e.palo == palo }
+    ColeccionCartas.new(selected_cards)
+  end
+  
   def palo_de_mayor_aparicion
     freq_palos = cards.each_with_object(Hash.new(0)) { |v, h| h[v.palo] += 1; }
     cards.max_by { |v| freq_palos[v] }.palo
