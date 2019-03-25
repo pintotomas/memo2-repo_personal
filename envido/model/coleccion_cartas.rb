@@ -30,10 +30,10 @@ class ColeccionCartas
 end
 
 class ColeccionCartasTruco < ColeccionCartas
-  def calcular_puntos_de_envido
+  def calcular_puntos_de_envido(primeras_n_cartas = length)
     tanto = 0
-    cards.each do |carta|
-      tanto += carta.envido_value
+    (0..primeras_n_cartas - 1).each do |i|
+      tanto += cards[i].envido_value
     end
     tanto + 20
   end
@@ -44,6 +44,12 @@ class ColeccionCartasTruco < ColeccionCartas
   end
 
   def card_with_max_value
+    # deberia ser with_max_envido_value si luego lo usamos para la carta de max valor en truco
+    # (ancho de espadas) si se implementa la funcionalidad de truco en el futuro
     cards.max_by(&:envido_value)
+  end
+
+  def sort_by_envido_value
+    self.class.new(cards.sort_by { |card| -card.envido_value })
   end
 end
