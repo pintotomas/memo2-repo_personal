@@ -7,4 +7,8 @@ describe 'Coleccion de cartas' do
     coleccion = ColeccionCartas.new([Carta.new('o', 10), Carta.new('o', 11), Carta.new('e', 7)])
     expect(coleccion.palo_de_mayor_aparicion).to eq 'o'
   end
+  it 'Palo de mayor aparicion cuando todos los palos son iguales' do
+    coleccion = ColeccionCartas.new([Carta.new('e', 10), Carta.new('e', 11), Carta.new('e', 7)])
+    expect(coleccion.palo_de_mayor_aparicion).to eq 'e'
+  end
 end

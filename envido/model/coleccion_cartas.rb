@@ -7,8 +7,10 @@ class ColeccionCartas
   def obtener_cartas_con_palo(palo); end
 
   def palo_de_mayor_aparicion
-    'o'
+    freq_palos = cards.each_with_object(Hash.new(0)) { |v, h| h[v.palo] += 1; }
+    cards.max_by { |v| freq_palos[v] }.palo
   end
+
 
   attr_reader :cards
 end
