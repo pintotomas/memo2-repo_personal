@@ -33,4 +33,9 @@ describe 'Envido' do
     juego_envido = Envido.new(ColeccionCartasTruco.new(mano))
     expect(juego_envido.calcular_tanto).to eq 27
   end
+  it 'envido con tres cartas del mismo palo, con tres mayor que 10' do
+    mano = [CartaTruco.new('oro', 10), CartaTruco.new('oro', 11), CartaTruco.new('oro', 12)]
+    juego_envido = Envido.new(ColeccionCartasTruco.new(mano))
+    expect(juego_envido.calcular_tanto).to eq 20
+  end
 end
