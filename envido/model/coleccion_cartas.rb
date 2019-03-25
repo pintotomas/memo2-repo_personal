@@ -14,8 +14,8 @@ class ColeccionCartas
     cards.max_by { |v| freq_palos[v] }.palo
   end
 
-  def maximo_valor
-    cards.max_by(&:valor).valor
+  def card_with_max_value
+    cards.max_by(&:valor)
   end
 
   def each(&block)
@@ -31,7 +31,7 @@ end
 
 class ColeccionCartasTruco < ColeccionCartas
   def calcular_puntos_de_envido
-    return maximo_valor unless length > 1
+    return card_with_max_value.envido_value unless length > 1
 
     tanto = 0
     cards.each do |carta|

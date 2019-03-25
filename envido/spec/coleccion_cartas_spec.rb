@@ -13,15 +13,21 @@ describe 'Coleccion de cartas' do
   end
   it 'Mayor valor con todos los valores iguales' do
     coleccion = ColeccionCartas.new([Carta.new('e', 10), Carta.new('e', 10), Carta.new('e', 10)])
-    expect(coleccion.maximo_valor).to eq 10
+    expect(coleccion.card_with_max_value.valor).to eq 10
   end
   it 'Mayor valor con todos los valores distintos' do
     coleccion = ColeccionCartas.new([Carta.new('e', 10), Carta.new('e', 11), Carta.new('e', 12)])
-    expect(coleccion.maximo_valor).to eq 12
+    expect(coleccion.card_with_max_value.valor).to eq 12
   end
-  it 'Valor de envido con una sola carta' do
+  it 'Valor de envido con una sola carta menor a 10' do
     a = [CartaTruco.new('espada', 7)]
     mano_truco = ColeccionCartasTruco.new(a)
     expect(mano_truco.calcular_puntos_de_envido).to eq 7
+  end
+
+  it 'Valor de envido con una sola carta mayor o igual a 10' do
+    b = [CartaTruco.new('espada', 10)]
+    mano_truco2 = ColeccionCartasTruco.new(b)
+    expect(mano_truco2.calcular_puntos_de_envido).to eq 0
   end
 end
