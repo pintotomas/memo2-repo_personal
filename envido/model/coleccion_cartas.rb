@@ -36,7 +36,6 @@ class ColeccionCartasTruco < ColeccionCartas
       tanto += carta.envido_value
     end
     tanto + 20
-
   end
 
   def obtener_cartas_con_palo(palo)
