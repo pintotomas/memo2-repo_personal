@@ -22,5 +22,9 @@ class ColeccionCartas
     @cards.each(&block)
   end
 
+  def length
+    cards.length
+  end
+
   attr_reader :cards
 end
