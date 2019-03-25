@@ -11,8 +11,12 @@ describe 'Coleccion de cartas' do
     coleccion = ColeccionCartas.new([Carta.new('e', 10), Carta.new('e', 11), Carta.new('e', 7)])
     expect(coleccion.palo_de_mayor_aparicion).to eq 'e'
   end
-  it 'Carta de mayor valor con todos los valores iguales' do
+  it 'Mayor valor con todos los valores iguales' do
     coleccion = ColeccionCartas.new([Carta.new('e', 10), Carta.new('e', 10), Carta.new('e', 10)])
     expect(coleccion.maximo_valor).to eq 10
+  end
+  it 'Mayor valor con todos los valores distintos' do
+    coleccion = ColeccionCartas.new([Carta.new('e', 10), Carta.new('e', 11), Carta.new('e', 12)])
+    expect(coleccion.maximo_valor).to eq 12
   end
 end

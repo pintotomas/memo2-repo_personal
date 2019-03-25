@@ -15,8 +15,7 @@ class ColeccionCartas
   end
 
   def maximo_valor
-    # cards.max_by(&:valor).valor
-    10
+    cards.max_by(&:valor).valor
   end
 
   def each(&block)
