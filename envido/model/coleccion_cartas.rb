@@ -31,12 +31,16 @@ end
 
 class ColeccionCartasTruco < ColeccionCartas
   def calcular_puntos_de_envido
-    return card_with_max_value.envido_value unless length > 1
-
     tanto = 0
     cards.each do |carta|
       tanto += carta.envido_value
     end
-    tanto
+    tanto + 20
+
+  end
+
+  def obtener_cartas_con_palo(palo)
+    selected_cards = cards.select { |e| e.palo == palo }
+    ColeccionCartasTruco.new(selected_cards)
   end
 end
