@@ -8,7 +8,7 @@ describe 'Chopper' do
     expect(chopper.chop(3, [])).to eq -1 # rubocop:disable Lint/AmbiguousOperator
   end
 
-=begin # rubocop:disable all
+ # rubocop:disable all
   it 'chop de 3 y [3] deberia ser 0' do
     expect(chopper.chop(3, [3])).to eq 0
   end
@@ -52,6 +52,4 @@ describe 'Chopper' do
   it 'sum de [20,1,1,1] deberia ser dos,tres' do
     expect(chopper.sum([20, 1, 1, 1])).to eq 'dos,tres'
   end
-=end # rubocop:enable all
-
 end
