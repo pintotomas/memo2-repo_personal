@@ -2,11 +2,12 @@
 require_relative '../model/envido'
 require_relative '../model/coleccion_cartas'
 require_relative 'creador_cartas.rb'
-require_relative 'output_adapter'
+require_relative 'output_adapter.rb'
+require_relative 'input_adapter.rb'
 
 class EnvidoGame
-  def run(arguments, output_adapter)
-    cards_to_play = Factory.create_cards_for_envido(arguments)
+  def run(input_adapter, output_adapter)
+    cards_to_play = Factory.create_cards_for_envido(input_adapter.read)
     card_collection = ColeccionCartasTruco.new(cards_to_play)
     envido = Envido.new(card_collection)
     result = envido.calcular_tanto
@@ -19,6 +20,7 @@ class EnvidoGame
   end
 end
 
-output_adapter = ConsoleAdapter.new
+input_adapter = ConsoleInputAdapter.new(ARGV[0])
+output_adapter = ConsoleOutputAdapter.new
 new_game = EnvidoGame.new
-new_game.run(ARGV[0], output_adapter)
+new_game.run(input_adapter, output_adapter)

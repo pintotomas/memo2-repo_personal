@@ -4,7 +4,7 @@ class OutputAdapter
   end
 end
 
-class ConsoleAdapter < OutputAdapter
+class ConsoleOutputAdapter < OutputAdapter
   def present(message)
     puts message
   end
