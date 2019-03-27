@@ -15,7 +15,7 @@ class ConsoleInputAdapter < InputAdapter
     @input = input
   end
 
-  def read
+  def interpret
     @input
   end
 end

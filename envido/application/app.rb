@@ -7,7 +7,7 @@ require_relative 'input_adapter.rb'
 
 class EnvidoGame
   def run(input_adapter, output_adapter)
-    cards_to_play = Factory.create_cards_for_envido(input_adapter.read)
+    cards_to_play = Factory.create_cards_for_envido(input_adapter.interpret)
     card_collection = ColeccionCartasTruco.new(cards_to_play)
     envido = Envido.new(card_collection)
     result = envido.calcular_tanto
