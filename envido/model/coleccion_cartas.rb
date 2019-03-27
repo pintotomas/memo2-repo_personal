@@ -6,7 +6,14 @@ class ColeccionCartas
 
   def obtener_cartas_con_palo(palo)
     selected_cards = cards.select { |e| e.palo == palo }
-    ColeccionCartas.new(selected_cards)
+    # ColeccionCartas.new(selected_cards)
+    @cards = selected_cards
+    self
+  end
+
+  def frecuencia_palo_mayor_aparicion
+    freq_palos = cards.each_with_object(Hash.new(0)) { |v, h| h[v.palo] += 1; }
+    freq_palos.values.max
   end
 
   def palo_de_mayor_aparicion
@@ -14,8 +21,9 @@ class ColeccionCartas
     cards.max_by { |v| freq_palos[v] }.palo
   end
 
-  def card_with_max_value
-    cards.max_by(&:valor)
+  def carta_maximo_valor(atr)
+    # devuelve la carta de maximo valor de atr.
+    cards.max_by(&atr)
   end
 
   def each(&block)
@@ -24,6 +32,13 @@ class ColeccionCartas
 
   def length
     cards.length
+  end
+
+  def sort(atr)
+    # ordena segun atr
+    # self.class.new(cards.sort_by(&atr).reverse)
+    @cards = @cards.sort_by(&atr).reverse
+    self
   end
 
   attr_reader :cards
@@ -36,20 +51,5 @@ class ColeccionCartasTruco < ColeccionCartas
       tanto += cards[i].envido_value
     end
     tanto
-  end
-
-  def obtener_cartas_con_palo(palo)
-    selected_cards = cards.select { |e| e.palo == palo }
-    ColeccionCartasTruco.new(selected_cards)
-  end
-
-  def card_with_max_value
-    # deberia ser with_max_envido_value si luego lo usamos para la carta de max valor en truco
-    # (ancho de espadas) si se implementa la funcionalidad de truco en el futuro
-    cards.max_by(&:envido_value)
-  end
-
-  def sort_by_envido_value
-    self.class.new(cards.sort_by { |card| -card.envido_value })
   end
 end

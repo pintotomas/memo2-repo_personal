@@ -6,24 +6,23 @@ class Envido
   # Solo queremos las 2 de mayor valor de envido
 
   def initialize(card_collection)
-    @cards_on_game = card_collection
+    @mano_cartas = card_collection
+    @puntos_default_dos_cartas_mismo_palo = 20
+    @max_cant_cartas_para_calc = 2
   end
 
   def calcular_tanto
-    cant_cartas_q_suman = 2
-    palo_mayor_aparicion = cards_on_game.palo_de_mayor_aparicion
-    cartas_mismo_palo = cards_on_game.obtener_cartas_con_palo(palo_mayor_aparicion)
-    return cards_on_game.card_with_max_value.envido_value unless cartas_mismo_palo.length > 1
+    freq_palo_mayor_aparicion = mano_cartas.frecuencia_palo_mayor_aparicion
+    return mano_cartas.carta_maximo_valor(:envido_value).envido_value unless freq_palo_mayor_aparicion > 1
 
-    tanto_default = 20
-    # Si tenemos 3 cartas del mismo palo solo tener en cuenta las 2 con mayor valor de envido
-    tanto = if cartas_mismo_palo.length == 3
-              cartas_mismo_palo.sort_by_envido_value.calcular_puntos_de_envido(cant_cartas_q_suman)
-            else
-              cartas_mismo_palo.calcular_puntos_de_envido
-            end
-    tanto + tanto_default
+    # Si tenemos 2 o mas cartas
+
+    palo_mayor_aparicion = mano_cartas.palo_de_mayor_aparicion
+    cartas_mismo_palo = mano_cartas.obtener_cartas_con_palo(palo_mayor_aparicion)
+    tanto = cartas_mismo_palo.sort(:envido_value).calcular_puntos_de_envido(@max_cant_cartas_para_calc)
+
+    tanto + @puntos_default_dos_cartas_mismo_palo
   end
 
-  attr_reader :cards_on_game
+  attr_reader :mano_cartas
 end

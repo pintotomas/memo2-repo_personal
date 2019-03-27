@@ -12,13 +12,19 @@ class Carta
 end
 
 class CartaTruco < Carta
-  def envido_value
-    valor
+  def initialize(palo, valor)
+    super(palo, valor)
+    @envido_value = valor
   end
+
+  attr_reader :envido_value
 end
 
 class FiguraTruco < CartaTruco
-  def envido_value
-    0
+  def initialize(palo, valor)
+    super(palo, valor)
+    @envido_value = 0
   end
+
+  attr_reader :envido_value
 end

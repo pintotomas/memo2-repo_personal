@@ -3,6 +3,7 @@ require_relative '../model/envido'
 require_relative '../model/coleccion_cartas.rb'
 require_relative '../model/carta'
 require_relative '../model/exceptions'
+require 'byebug'
 
 describe 'Envido' do
   # let(:envido) { Envido.new([]) }

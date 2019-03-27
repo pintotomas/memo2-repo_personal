@@ -13,11 +13,11 @@ describe 'Coleccion de cartas' do
   end
   it 'Mayor valor con todos los valores iguales' do
     coleccion = ColeccionCartas.new([Carta.new('e', 10), Carta.new('e', 10), Carta.new('e', 10)])
-    expect(coleccion.card_with_max_value.valor).to eq 10
+    expect(coleccion.carta_maximo_valor(:valor).valor).to eq 10
   end
   it 'Mayor valor con todos los valores distintos' do
     coleccion = ColeccionCartas.new([Carta.new('e', 10), Carta.new('e', 11), Carta.new('e', 12)])
-    expect(coleccion.card_with_max_value.valor).to eq 12
+    expect(coleccion.carta_maximo_valor(:valor).valor).to eq 12
   end
   it 'Valor de envido con dos cartas del mismo palo y mayores a 10' do
     c = [FiguraTruco.new('espada', 10), FiguraTruco.new('espada', 11)]
