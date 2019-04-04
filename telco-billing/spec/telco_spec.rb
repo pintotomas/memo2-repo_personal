@@ -14,4 +14,7 @@ describe 'Telco' do
   it 'Local call with one minute duration on weekend should cost 2.1' do
     expect(telco.call_cost('20190210;14:30', '20190210;14:31')).to eq 2.1
   end
+  it 'Local call with two minutes duration between 8 and 20 hs on weekdays should cost 6.4' do
+    expect(telco.call_cost('20190211;14:30', '20190211;14:32')).to eq 6.4
+  end
 end
