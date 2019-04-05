@@ -15,11 +15,11 @@ class Call
     @call_end_time - @call_start_time
   end
 
-  def saturday
-    @call_start_time.saturday?
+  def started_weekend
+    @call_start_time.saturday? || @call_start_time.sunday?
   end
 
-  def sunday
-    @call_start_time.sunday?
+  def ended_weekend
+    @call_end_time.saturday? || @call_end_time.sunday?
   end
 end

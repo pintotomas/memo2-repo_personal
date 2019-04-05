@@ -20,22 +20,22 @@ describe 'Call' do
     expect(Call.new('20190211;14:30', '20190211;14:33').duration).to eq 180
   end
 
-  it 'Call on a sunday, when asked if it was made on sunday, should return true' do
-    expect(Call.new('20190210;14:30', '20190210;14:31').sunday).to eq true
+  it 'Call started on saturday,asked if it started weekend, should return true' do
+    expect(Call.new('20190209;14:30', '20190209;14:31').started_weekend).to eq true
   end
-  it 'Call on a saturday, when asked if it was made on saturday, should return true' do
-    expect(Call.new('20190209;14:30', '20190209;14:31').saturday).to eq true
+  it 'Call started monday, asked if it started weekend, should return false' do
+    expect(Call.new('20190211;14:30', '20190211;14:31').started_weekend).to eq false
   end
-  it 'Call on a monday, when asked if it was made on saturday, should return false' do
-    expect(Call.new('20190211;14:30', '20190214;14:31').saturday).to eq false
+  it 'Call started friday, when asked if it started weekend, should return false' do
+    expect(Call.new('20190215;14:30', '20190215;14:31').started_weekend).to eq false
   end
-  it 'Call on a monday, when asked if it was made on sunday, should return false' do
-    expect(Call.new('20190211;14:30', '20190214;14:31').sunday).to eq false
+  it 'Call ended on saturday,asked if it ended weekend, should return true' do
+    expect(Call.new('20190209;14:30', '20190209;14:31').ended_weekend).to eq true
   end
-  it 'Call on a friday, when asked if it was made on saturday, should return false' do
-    expect(Call.new('20190215;14:30', '20190215;14:31').saturday).to eq false
+  it 'Call ended monday, asked if it ended weekend, should return false' do
+    expect(Call.new('20190211;14:30', '20190211;14:31').ended_weekend).to eq false
   end
-  it 'Call on a friday, when asked if it was made on sunday, should return false' do
-    expect(Call.new('20190215;14:30', '20190215;14:31').sunday).to eq false
+  it 'Call ended friday, when asked if it ended weekend, should return false' do
+    expect(Call.new('20190215;14:30', '20190215;14:31').ended_weekend).to eq false
   end
 end
