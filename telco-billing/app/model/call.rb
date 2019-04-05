@@ -24,8 +24,9 @@ class Call
   end
 
   def started_after(hour)
-    @call_start_time.hour < hour
+    @call_start_time.hour > hour
   end
+
   def ended_before(hour)
     @call_end_time.hour < hour
   end

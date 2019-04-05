@@ -38,16 +38,16 @@ describe 'Call' do
   it 'Call ended friday, when asked if it ended weekend, should return false' do
     expect(Call.new('20190215;14:30', '20190215;14:31').ended_weekend).to eq false
   end
-  it 'Call made 8pm should have started before 9pm' do
-    expect(Call.new('20190215;20:30', '20190215;21:31').started_after(21)).to eq false
-  end
-  it 'Call made 8pm shouldnt have started before 7pm' do
+  it 'Call made 20hs should have started after 19hs' do
     expect(Call.new('20190215;20:30', '20190215;21:31').started_after(19)).to eq true
   end
-  it 'Call ended 8pm should have ended before 9pm' do
-    expect(Call.new('20190215;20:30', '20190215;21:31').ended_before(21)).to eq true
+  it 'Call made 20hs shouldnt have started after 21' do
+    expect(Call.new('20190215;20:30', '20190215;21:31').started_after(21)).to eq false
   end
-  it 'Call ended 8pm shouldnt have ended before 7pm' do
+  it 'Call ended 21hs should have ended before 22hs' do
+    expect(Call.new('20190215;20:30', '20190215;21:31').ended_before(22)).to eq true
+  end
+  it 'Call ended 20hs shouldnt have ended before 19hs' do
     expect(Call.new('20190215;20:30', '20190215;21:31').ended_before(19)).to eq false
   end
 end
