@@ -41,4 +41,7 @@ describe 'Call' do
   it 'Call made 8pm should have started before 9pm' do
     expect(Call.new('20190215;20:30', '20190215;21:31').started_before(21)).to eq true
   end
+  it 'Call made 8pm shouldnt have started before 7pm' do
+    expect(Call.new('20190215;20:30', '20190215;21:31').started_before(19)).to eq false
+  end
 end
