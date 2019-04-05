@@ -15,5 +15,5 @@ class Telco
     return difference_in_minutes * weekday_day_cost if call.ended_before(night_start_time)
 
     difference_in_minutes * weekday_night_cost
- end
+  end
 end
