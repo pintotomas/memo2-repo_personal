@@ -22,4 +22,8 @@ class Call
   def ended_weekend
     @call_end_time.saturday? || @call_end_time.sunday?
   end
+
+  def started_before(hour)
+    @call_start_time.hour < hour
+  end
 end

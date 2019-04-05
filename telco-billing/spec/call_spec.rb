@@ -38,4 +38,7 @@ describe 'Call' do
   it 'Call ended friday, when asked if it ended weekend, should return false' do
     expect(Call.new('20190215;14:30', '20190215;14:31').ended_weekend).to eq false
   end
+  it 'Call made 8pm should have started before 9pm' do
+    expect(Call.new('20190215;20:30', '20190215;21:31').started_before(21)).to eq true
+  end
 end
