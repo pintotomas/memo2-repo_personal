@@ -19,4 +19,11 @@ describe 'Call' do
   it 'Call with three minutes duration' do
     expect(Call.new('20190211;14:30', '20190211;14:33').duration).to eq 180
   end
+
+  it 'Call on a sunday, when asked if it was made on sunday, should return true' do
+    expect(Call.new('20190210;14:30', '20190210;14:31').sunday).to eq true
+  end
+  it 'Call on a saturday, when asked if it was made on saturday, should return true' do
+    expect(Call.new('20190209;14:30', '20190209;14:31').saturday).to eq true
+  end
 end

@@ -14,4 +14,12 @@ class Call
     # returns the duration of the call, in seconds
     @call_end_time - @call_start_time
   end
+
+  def saturday
+    @call_start_time.saturday?
+  end
+
+  def sunday
+    @call_start_time.sunday?
+  end
 end
