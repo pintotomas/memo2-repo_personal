@@ -15,4 +15,8 @@ describe 'Call' do
   it 'Call with one minute duration' do
     expect(Call.new('20190211;14:30', '20190211;14:31').duration).to eq 60
   end
+
+  it 'Call with three minutes duration' do
+    expect(Call.new('20190211;14:30', '20190211;14:33').duration).to eq 180
+  end
 end
