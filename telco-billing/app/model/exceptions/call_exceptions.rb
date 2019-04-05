@@ -1,0 +1,2 @@
+class InvalidCallStartOrEndTimeError < RuntimeError
+end
