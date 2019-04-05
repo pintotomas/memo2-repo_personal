@@ -26,4 +26,16 @@ describe 'Call' do
   it 'Call on a saturday, when asked if it was made on saturday, should return true' do
     expect(Call.new('20190209;14:30', '20190209;14:31').saturday).to eq true
   end
+  it 'Call on a monday, when asked if it was made on saturday, should return false' do
+    expect(Call.new('20190211;14:30', '20190214;14:31').saturday).to eq false
+  end
+  it 'Call on a monday, when asked if it was made on sunday, should return false' do
+    expect(Call.new('20190211;14:30', '20190214;14:31').sunday).to eq false
+  end
+  it 'Call on a friday, when asked if it was made on saturday, should return false' do
+    expect(Call.new('20190215;14:30', '20190215;14:31').saturday).to eq false
+  end
+  it 'Call on a friday, when asked if it was made on sunday, should return false' do
+    expect(Call.new('20190215;14:30', '20190215;14:31').sunday).to eq false
+  end
 end
