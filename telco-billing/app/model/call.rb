@@ -9,4 +9,9 @@ class Call
   rescue ArgumentError
     raise InvalidCallStartOrEndTimeError
   end
+
+  def duration
+    # returns the duration of the call, in seconds
+    @call_end_time - @call_start_time
+  end
 end

@@ -11,4 +11,8 @@ describe 'Call' do
                '20190211;14:30')
     end .to raise_error CallEndTimeBeforeStartTimeError
   end
+
+  it 'Call with one minute duration' do
+    expect(Call.new('20190211;14:30', '20190211;14:31').duration).to eq 60
+  end
 end
