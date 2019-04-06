@@ -1,8 +1,12 @@
 class MinuteDetector
-  # saturday is 0. sunday is 1
+
+  # These two first hashes are used for counting minutes of the call,
+  # a minute of a call during sunday should not be considered for the counting of minutes during week
 
   @weekend_days = { 0 => 1, 6 => 1, 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0 }
   @week_days = { 0 => 0, 6 => 0, 1 => 1, 2 => 1, 3 => 1, 4 => 1, 5 => 1 }
+
+  # Local calls should be differentiated if it transcurs during night or day in a week day.  
   @type_of_minute = { 0 => 'week_night_min', 1 => 'week_night_min',
                       2 => 'week_night_min', 3 => 'week_night_min', 4 => 'week_night_min',
                       5 => 'week_night_min', 6 => 'week_night_min', 7 => 'week_night_min',
