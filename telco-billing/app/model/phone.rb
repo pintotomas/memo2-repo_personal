@@ -30,6 +30,10 @@ class Phone
     @country_code == other_phone.country_code
   end
 
+  def same_area_code(other_phone)
+    @area_code == other_phone.area_code
+  end
+
   private
 
   def validate_country_coude(country_code)
