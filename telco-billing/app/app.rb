@@ -1,7 +1,9 @@
 require 'sinatra'
 require 'json'
-require_relative 'model'
-require_relative 'adapters'
+require_relative 'model/telco'
+require_relative 'model/call'
+require_relative 'adapters/input_adapter'
+require_relative 'adapters/output_adapter'
 telco = Telco.new
 input_adapter = JSONInputAdapter.new
 output_adapter = JSONOutputAdapter.new
