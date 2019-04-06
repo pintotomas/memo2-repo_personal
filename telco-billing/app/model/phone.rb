@@ -23,6 +23,13 @@ class Phone
     @phone_number = phone_number
   end
 
+  attr_reader :country_code
+  attr_reader :area_code
+
+  def same_country(other_phone)
+    @country_code == other_phone.country_code
+  end
+
   private
 
   def validate_country_coude(country_code)

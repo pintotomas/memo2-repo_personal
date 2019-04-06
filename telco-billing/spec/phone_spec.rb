@@ -16,4 +16,9 @@ describe 'Phone' do
   it 'Creating a new phone with invalid area code should raise exception' do
     expect { Phone.new('5411111111111') }.to raise_error(InvalidAreaCodeError)
   end
+  it 'Phones with same country code are detected correctly' do
+    p1 = Phone.new('5401111111111')
+    p2 = Phone.new('5401111111112')
+    expect(p1.same_country(p2)).to eq true
+  end
 end
