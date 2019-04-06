@@ -31,4 +31,9 @@ describe 'Phone' do
     p2 = Phone.new('5401111111112')
     expect(p1.same_area_code(p2)).to eq true
   end
+  it 'Phones with different area code are detected correctly' do
+    p1 = Phone.new('5401111111111')
+    p2 = Phone.new('5431411111112')
+    expect(p1.same_area_code(p2)).to eq false
+  end
 end
