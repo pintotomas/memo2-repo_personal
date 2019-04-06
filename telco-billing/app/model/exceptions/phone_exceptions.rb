@@ -6,3 +6,6 @@ end
 
 class InvalidCountryCodeError < RuntimeError
 end
+
+class InvalidAreaCodeError < RuntimeError
+end
