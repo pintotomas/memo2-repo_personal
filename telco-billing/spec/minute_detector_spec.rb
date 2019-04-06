@@ -20,4 +20,12 @@ describe 'MinuteDetector' do
     week_day_minutes = minute_count['week_day_minutes']
     expect(week_day_minutes).to eq 1
   end
+
+  it 'detector detects correctly the quantity of minutes of Call of 1 min (night) on weekday ' do
+    start = Time.parse('20190212;20:30')
+    finish = Time.parse('20190212;20:31')
+    minute_count = MinuteDetector.differentiate_call_minutes(start, finish)
+    week_night_minutes = minute_count['week_night_minutes']
+    expect(week_night_minutes).to eq 1
+  end
 end
