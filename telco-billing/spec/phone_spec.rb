@@ -21,4 +21,9 @@ describe 'Phone' do
     p2 = Phone.new('5401111111112')
     expect(p1.same_country(p2)).to eq true
   end
+  it 'Phones with different country code are differentiated correctly' do
+    p1 = Phone.new('5201111111111')
+    p2 = Phone.new('5401111111112')
+    expect(p1.same_country(p2)).to eq false
+  end
 end
