@@ -10,11 +10,21 @@ class Call
     @weekend_minutes = minutes_elapsed['weekend_min']
     @week_day_minutes = minutes_elapsed['week_day_min']
     @week_night_minutes = minutes_elapsed['week_night_min']
-
+    @weekday_night_cost = 1.8
+    @weekday_day_cost = 3.2
+    @weekends_cost = 2.1
     raise CallEndTimeBeforeStartTimeError unless @call_start_time < @call_end_time
   rescue ArgumentError
     raise InvalidCallStartOrEndTimeError
   end
+
+  def cost
+    weekend_cost = @weekend_minutes * @weekends_cost
+    week_day_cost = @week_day_minutes * @weekday_day_cost
+    week_night_cost = @week_night_minutes * @weekday_night_cost
+    weekend_cost + week_night_cost + week_day_cost
+  end
+
   attr_reader :weekend_minutes
 
   attr_reader :week_night_minutes
