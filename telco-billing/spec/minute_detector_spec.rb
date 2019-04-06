@@ -1,6 +1,7 @@
 require 'rspec'
 require 'time'
 require_relative '../app/model/minute_detector.rb'
+require 'byebug'
 describe 'MinuteDetector' do
   let(:minute_detector) { MinuteDetector.new }
 
@@ -49,5 +50,15 @@ describe 'MinuteDetector' do
     minute_count = MinuteDetector.differentiate_call_minutes(start, finish)
     week_night_minutes = minute_count['week_night_minutes']
     expect(week_night_minutes).to eq 2
+  end
+    it 'detector detects correctly the quantity of minutes of Call of 2 min between a friday night and a saturday ' do
+    #byebug
+    start = Time.parse('20190208;23:59')
+    finish = Time.parse('20190209;00:01')
+    minute_count = MinuteDetector.differentiate_call_minutes(start, finish)
+    week_night_minutes = minute_count['week_night_minutes']
+    weekend_minutes = minute_count['weekend_minutes']
+    expect(week_night_minutes).to eq 1
+    expect(weekend_minutes).to eq 1
   end
 end

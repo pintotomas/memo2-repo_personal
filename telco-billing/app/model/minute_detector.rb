@@ -12,13 +12,14 @@ class MinuteDetector
       actual_call_time_aux = call_start_time
       minute_increment = 60
       while actual_call_time_aux < call_end_time
-        actual_call_time_aux += minute_increment  
+        
 
         if actual_call_time_aux.sunday? || actual_call_time_aux.saturday?
           minutes_result['weekend_minutes'] = minutes_result['weekend_minutes'] + 1
         else 
           minutes_result[@type_of_minute[actual_call_time_aux.hour]] = minutes_result[@type_of_minute[actual_call_time_aux.hour]] + 1
         end
+        actual_call_time_aux += minute_increment  
       end
       minutes_result
      end
