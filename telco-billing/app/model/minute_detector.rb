@@ -1,4 +1,8 @@
 class MinuteDetector
+  # saturday is 0. sunday is 1
+
+  @weekend_days = { 0 => 1, 6 => 1, 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0 }
+  @week_days = { 0 => 0, 6 => 0, 1 => 1, 2 => 1, 3 => 1, 4 => 1, 5 => 1 }
   @type_of_minute = { 0 => 'week_night_min', 1 => 'week_night_min',
                       2 => 'week_night_min', 3 => 'week_night_min', 4 => 'week_night_min',
                       5 => 'week_night_min', 6 => 'week_night_min', 7 => 'week_night_min',
@@ -17,13 +21,10 @@ class MinuteDetector
     actual_call_time_aux = call_start_time
     minute_increment = 60
     while actual_call_time_aux < call_end_time
+      minutes_result['weekend_min'] = minutes_result['weekend_min'] + (1 * @weekend_days[actual_call_time_aux.wday])
+      minutes_result[@type_of_minute[actual_call_time_aux.hour]] =
+        minutes_result[@type_of_minute[actual_call_time_aux.hour]] + (1 * @week_days[actual_call_time_aux.wday])
 
-      if actual_call_time_aux.sunday? || actual_call_time_aux.saturday?
-        minutes_result['weekend_min'] = minutes_result['weekend_min'] + 1
-      else
-        minutes_result[@type_of_minute[actual_call_time_aux.hour]] =
-          minutes_result[@type_of_minute[actual_call_time_aux.hour]] + 1
-      end
       actual_call_time_aux += minute_increment
     end
     minutes_result
