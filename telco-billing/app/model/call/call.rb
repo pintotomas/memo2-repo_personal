@@ -31,11 +31,6 @@ class Call
     total_cost
   end
 
-  attr_reader :weekend_minutes
-
-  attr_reader :week_night_minutes
-  attr_reader :week_day_minutes
-
   private
 
   def process_call(time_start, time_end)
