@@ -29,4 +29,10 @@ describe 'TimeAux' do
     TimeAux.count_minutes(Time.parse('20190224;14:35'), Time.parse('20190224;14:40'), params, minute_counter)
     expect(minute_counter.cost).to eq 0
   end
+  it 'time_aux doesnt count minutes if they are out of the time range of that day, but counts the minutes inside' do
+    minute_counter = MinuteCounter.new(2.5)
+    params = { 0 => { 'since' => 14, 'until' => 15 } }
+    TimeAux.count_minutes(Time.parse('20190224;15:58'), Time.parse('20190224;16:40'), params, minute_counter)
+    expect(minute_counter.cost).to eq 5
+  end
 end

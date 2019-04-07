@@ -11,14 +11,16 @@ class TimeAux
     # increments minute_counter when a time meets the requirements in params
     aux_time = time_start
     while aux_time < time_end
-      aux_time += @minute_increment
       actual_day = aux_time.wday
       actual_hour = aux_time.hour
-      next unless params.key? actual_day
+      if params.key? actual_day
 
-      start_hour_limit = params[actual_day]['since']
-      end_hour_limit = params[actual_day]['until']
-      minute_counter.inc if actual_hour.between?(start_hour_limit, end_hour_limit)
+        start_hour_limit = params[actual_day]['since']
+        end_hour_limit = params[actual_day]['until']
+        minute_counter.inc if actual_hour.between?(start_hour_limit, end_hour_limit)
+      end
+      aux_time += @minute_increment
+
     end
   end
 end
