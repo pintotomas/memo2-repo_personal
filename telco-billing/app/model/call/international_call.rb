@@ -1,21 +1,19 @@
 require_relative 'call'
 require_relative '../time_aux'
 require_relative '../minutes/minute_counter'
-class NationalCall < Call
-  def initialize(call_start_time, call_end_time)
+class InternationalCall < Call
+  # After integrating phone, removing country_code
+
+  def initialize(call_start_time, call_end_time, country_code)
     # call_start_time and call_end_time must have yyyymmdd;hhmm
     super(call_start_time, call_end_time)
-    cost = 1.5
+    costs = { '52' => 10, '55' => 6, '39' => 15 }
+    cost = costs[country_code]
 
     @min_counter = MinuteCounter.new(cost)
+    @minute_counters = [@min_counter]
 
     process_call
-  end
-
-  def cost
-    base_cost = 20
-    free_minutes = 5
-    @min_counter.cost(free_minutes) + base_cost
   end
 
   private
