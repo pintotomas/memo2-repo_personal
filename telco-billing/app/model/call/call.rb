@@ -2,12 +2,14 @@ require_relative 'call_exceptions'
 require_relative '../exceptions/general_exceptions'
 require 'time'
 class Call
-  def initialize(call_start_time, call_end_time, origin, destination)
+  def initialize(params)
+    # params is a dictionary that contains the following keys:
+    # origin and destination, both of Phone type
+    # start and end, both time stamps
     @minute_counters = []
-    @call_start_time = Time.parse(call_start_time)
-    @call_end_time = Time.parse(call_end_time)
-    @origin = origin
-    @destination = destination
+    @call_start_time = Time.parse(params['start'])
+    @call_end_time = Time.parse(params['end'])
+    @origin = params['origin']
 
     raise CallEndTimeBeforeStartTimeError unless @call_start_time < @call_end_time
   rescue ArgumentError
