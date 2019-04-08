@@ -14,4 +14,8 @@ describe 'NationalCall' do
     national_call = NationalCall.new('20190211;14:30', '20190211;14:36')
     expect(national_call.cost).to eq 21.5
   end
+  it 'National call of 15 minutes' do
+    national_call = NationalCall.new('20190211;14:30', '20190211;14:45')
+    expect(national_call.cost).to eq 35
+  end
 end
