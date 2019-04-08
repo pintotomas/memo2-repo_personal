@@ -1,3 +1,4 @@
+require_relative '../../aux/functions'
 class MinuteCounter
   def initialize(cost)
     @quantity = 0
@@ -8,7 +9,8 @@ class MinuteCounter
     @quantity += 1
   end
 
-  def cost
-    @quantity * @cost
+  def cost(minutes_ignored = 0)
+    final_quantity = max(@quantity - minutes_ignored, 0)
+    final_quantity * @cost
   end
 end

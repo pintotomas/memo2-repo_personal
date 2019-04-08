@@ -30,4 +30,5 @@ EndOfLine:
   Enabled: false
 Metrics/AbcSize:
   Enabled: false
-
+Naming/UncommunicativeMethodParamName:
+  Enabled: false
