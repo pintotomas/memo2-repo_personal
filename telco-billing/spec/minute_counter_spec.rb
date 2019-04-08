@@ -13,9 +13,17 @@ describe 'MinuteCOunter' do
     expect(minuteCounter.cost).to eq 2.5
   end
 
-  it 'Ignoring the first minute, the cost is 0 again' do
+  it 'Ignoring the first minute, the cost is 0' do
+    minuteCounter.inc
     minutes_ignored = 1
     expect(minuteCounter.cost(minutes_ignored)).to eq 0
   end
-  
+
+  it 'Increment two times, first ignore one, then check that if not ignoring the counter was not affected' do
+    minuteCounter.inc
+    minuteCounter.inc
+    minutes_ignored = 1
+    expect(minuteCounter.cost(minutes_ignored)).to eq 2.5
+    expect(minuteCounter.cost).to eq 5
+  end
 end
