@@ -29,6 +29,10 @@ class Phone
   attr_reader :country_code
   attr_reader :area_code
 
+  def phone_number
+    @country_code + @area_code + @phone_number
+  end
+
   def same_country(other_phone)
     @country_code == other_phone.country_code
   end
