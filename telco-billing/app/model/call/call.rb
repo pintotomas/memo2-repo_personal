@@ -24,6 +24,14 @@ class Call
     total_cost
   end
 
+  def month
+    @call_start_time.month
+  end
+
+  def year
+    @call_start_time.year
+  end
+
   private
 
   def process_call
