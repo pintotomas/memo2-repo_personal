@@ -1,6 +1,5 @@
 require 'sinatra'
 require_relative 'model/telco'
-require_relative 'model/call/local_call'
 require_relative 'adapters/input_adapter'
 require_relative 'adapters/output_adapter'
 telco = Telco.new
