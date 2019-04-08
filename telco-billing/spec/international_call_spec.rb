@@ -18,4 +18,12 @@ describe 'InternationalCall' do
     international_call = InternationalCall.new('20190211;14:30', '20190211;14:32', '55')
     expect(international_call.cost).to eq 12
   end
+  it 'international call call to rest of world of 1 minute' do
+    international_call = InternationalCall.new('20190211;14:30', '20190211;14:31', '39')
+    expect(international_call.cost).to eq 15
+  end
+  it 'international call call to rest of world of 2 minutes' do
+    international_call = InternationalCall.new('20190211;14:30', '20190211;14:32', '39')
+    expect(international_call.cost).to eq 30
+  end
 end
