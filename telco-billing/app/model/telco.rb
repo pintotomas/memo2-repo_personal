@@ -1,4 +1,5 @@
 require 'time'
+require_relative 'call/call_factory'
 class Telco
   def initialize
     @call_factory = CallFactory.new

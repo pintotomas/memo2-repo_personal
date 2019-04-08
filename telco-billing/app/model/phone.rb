@@ -46,7 +46,7 @@ class Phone
   end
 
   def validate_area_code(area_code)
-    valid_area_codes = %w[011 314]
+    valid_area_codes = %w[011 314 324 348]
     raise InvalidAreaCodeError unless valid_area_codes.include? area_code
   end
 

@@ -15,11 +15,11 @@ class CallFactory
         # If country codes are different, the area code doesnt matter
         false => { false => InternationalCall, true => InternationalCall } }
 
-    origin = Phone.new(call_info[:numero_origen])
-    destination = Phone.new(call_info[:numero_destino])
-    start_time_stamp = call_info[:fechahora_inicio]
-    end_time_stamp = call_info[:fechahora_fin]
+    origin = Phone.new(call_info['numero_origen'])
+    destination = Phone.new(call_info['numero_destino'])
+    start_time_stamp = call_info['fechahora_inicio']
+    end_time_stamp = call_info['fechahora_fin']
     call = call_classes[origin.same_country(destination)][origin.same_area_code(destination)]
-    call.new(start_time_stamp, end_time_stamp, origin)
+    call.new(start_time_stamp, end_time_stamp, origin, destination)
   end
 end
