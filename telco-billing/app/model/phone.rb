@@ -3,6 +3,9 @@ class Phone
   def initialize(string_number_info)
     # receives a string containing the number information, the two first must be the country code,
     # the following three the area code and last, 8 numbers
+
+    # delete spaces
+    string_number_info = string_number_info.delete(" \t\r\n")
     valide_input(string_number_info)
     country_code_start = 0
     country_code_end = 1
