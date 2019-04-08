@@ -9,8 +9,8 @@ class MinuteCounter
     @quantity += 1
   end
 
-  def cost(minutes_ignored = 0)
-    final_quantity = max(@quantity - minutes_ignored, 0)
+  def cost(free_minutes = 0)
+    final_quantity = max(@quantity - free_minutes, 0)
     final_quantity * @cost
   end
 end
