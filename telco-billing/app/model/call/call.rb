@@ -1,10 +1,12 @@
 require_relative 'call_exceptions'
 require_relative '../exceptions/general_exceptions'
+require 'time'
 class Call
-  def initialize(call_start_time, call_end_time)
+  def initialize(call_start_time, call_end_time, phone)
     @minute_counters = []
     @call_start_time = Time.parse(call_start_time)
     @call_end_time = Time.parse(call_end_time)
+    @phone = phone
     raise CallEndTimeBeforeStartTimeError unless @call_start_time < @call_end_time
   rescue ArgumentError
     raise InvalidCallStartOrEndTimeError

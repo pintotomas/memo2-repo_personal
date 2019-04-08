@@ -1,5 +1,4 @@
 require 'rspec'
-require 'byebug'
 require_relative '../app/model/call/call_factory'
 
 describe 'CallFactory' do
@@ -17,5 +16,12 @@ describe 'CallFactory' do
                   'fechahora_inicio': '20190211;14:30', 'fechahora_fin': '20190211;14:31' }
     national_call = callFactory.new_call(call_info)
     expect(national_call.class).to eq NationalCall
+  end
+
+  it 'Create a international call' do
+    call_info = { 'numero_origen': '54 011 4444 1111', 'numero_destino': '55 314 5555 6666',
+                  'fechahora_inicio': '20190211;14:30', 'fechahora_fin': '20190211;14:31' }
+    international_call = callFactory.new_call(call_info)
+    expect(international_call.class).to eq InternationalCall
   end
 end

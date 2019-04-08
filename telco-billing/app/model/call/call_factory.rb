@@ -20,6 +20,6 @@ class CallFactory
     start_time_stamp = call_info[:fechahora_inicio]
     end_time_stamp = call_info[:fechahora_fin]
     call = call_classes[origin.same_country(destination)][origin.same_area_code(destination)]
-    call.new(start_time_stamp, end_time_stamp)
+    call.new(start_time_stamp, end_time_stamp, origin)
   end
 end
