@@ -25,4 +25,29 @@ describe 'LocalCall' do
     params = { 'start' => '20190211;22:30', 'end' => '20190211;22:32', 'origin' => instance_double('phone') }
     expect(LocalCall.new(params).cost).to eq 3.6
   end
+  it 'Local call with two minutes duration during cost change during week (day to night)' do
+    params = { 'start' => '20190211;19:59', 'end' => '20190211;20:01', 'origin' => instance_double('phone') }
+
+    expect(LocalCall.new(params).cost).to eq 3.2 + 1.8
+  end
+  it 'Local call with two minutes duration during cost change during week (night to day)' do
+    params = { 'start' => '20190211;07:59', 'end' => '20190211;08:01', 'origin' => instance_double('phone') }
+
+    expect(LocalCall.new(params).cost).to eq 3.2 + 1.8
+  end
+  it 'Local call with two minutes duration during cost change during week (night to midnight)' do
+    params = { 'start' => '20190211;23:59', 'end' => '20190212;00:01', 'origin' => instance_double('phone') }
+
+    expect(LocalCall.new(params).cost).to eq 1.8 + 1.8
+  end
+  it 'Local call with two minutes duration during cost change from week to weekend' do
+    params = { 'start' => '20190215;23:59', 'end' => '20190216;00:01', 'origin' => instance_double('phone') }
+
+    expect(LocalCall.new(params).cost).to eq 1.8 + 2.1
+  end
+  it 'Local call with two minutes duration during cost change from weekend to week' do
+    params = { 'start' => '20190217;23:59', 'end' => '20190218;00:01', 'origin' => instance_double('phone') }
+
+    expect(LocalCall.new(params).cost).to eq 2.1 + 1.8
+  end
 end
