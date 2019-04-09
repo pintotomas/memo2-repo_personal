@@ -38,6 +38,10 @@ class Call
     @call_start_time.year
   end
 
+  def origin_country
+    @origin.country_code
+  end
+
   def destination_country
     @destination.country_code
   end
