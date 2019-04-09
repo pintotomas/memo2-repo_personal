@@ -28,6 +28,10 @@ class Call
     @call_start_time.month
   end
 
+  def phone
+    @origin.phone_number
+  end
+
   def year
     @call_start_time.year
   end

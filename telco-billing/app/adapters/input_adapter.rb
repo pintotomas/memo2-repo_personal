@@ -12,4 +12,9 @@ class JSONInputAdapter < InputAdapter
     input_parsed = JSON.parse(input)
     input_parsed
   end
+
+  def interpret_billing(input)
+    input_parsed = { 'number' => input[:numero], 'year_month' => input[:mes] }
+    input_parsed
+  end
 end
