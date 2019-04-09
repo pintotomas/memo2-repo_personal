@@ -38,4 +38,13 @@ describe 'Telco' do
     total = 3.2 + 20 + 15
     expect(res).to eq [calls_made, total]
   end
+  it 'Bill ignores local call made on another month' do
+    make_call(telco, '5401134330438', '5401112345679', '20190111;14:30', '20190211;14:31')
+    make_call(telco, '5401134330438', '5431412345679', '20190212;14:30', '20190212;14:31')
+    make_call(telco, '5401134330438', '3931412345679', '20190209;14:30', '20190209;14:31')
+    res = telco.bill('number' => '5401134330438', 'year_month' => '201902')
+    calls_made = 2
+    total = 20 + 15
+    expect(res).to eq [calls_made, total]
+  end
 end
