@@ -15,6 +15,8 @@ class Call
   rescue ArgumentError
     raise InvalidCallStartOrEndTimeError
   end
+  attr_reader :call_start_time
+  attr_reader :call_end_time
 
   def cost
     total_cost = 0
@@ -36,13 +38,13 @@ class Call
     @call_start_time.year
   end
 
+  def destination_country
+    @destination.country_code
+  end
+
   private
 
   def process_call
     raise SubclassResponsibility
-  end
-
-  def destination_country
-    @destination.area_code
   end
 end
