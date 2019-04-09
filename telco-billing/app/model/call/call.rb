@@ -46,6 +46,14 @@ class Call
     @destination.country_code
   end
 
+  def origin_area_code
+    @origin.area_code
+  end
+
+  def destination_area_code
+    @destination.area_code
+  end
+
   private
 
   def process_call

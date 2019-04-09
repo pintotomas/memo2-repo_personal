@@ -1,16 +1,29 @@
 require_relative 'international_call_cost_calculator'
 require_relative 'national_call_cost_calculator'
+require_relative 'local_call_cost_calculator'
 class CallCostCalculator
   def initialize
     @international_call_cost_calculator = InternationalCallCostCalculator.new
     @national_call_cost_calculator = NationalCallCostCalculator.new
-    # @local_call_cost_calculator = MinuteCostCalculator.new(1)
+    @local_call_cost_calculator = LocalCallCostCalculator.new
   end
 
   def cost(call)
-    who_costs_call = { false => @international_call_cost_calculator, true => @national_call_cost_calculator }
+    same_country_code = true
+    different_country_code = false
+    same_area_code = true
+    different_area_code = false
+
+    same_country_calculators = { same_area_code => @local_call_cost_calculator, different_area_code => @national_call_cost_calculator }
+    different_country_calculators = { same_area_code => @international_call_cost_calculator,
+                                      different_area_code => @international_call_cost_calculator }
+
+    who_costs_call = { different_country_code => different_country_calculators, same_country_code => same_country_calculators }
     destination = call.destination_country
     origin = call.origin_country
-    who_costs_call[origin == destination].cost(call)
+    origin_area_code = call.origin_area_code
+    destination_area_code = call.destination_area_code
+
+    who_costs_call[origin == destination][origin_area_code == destination_area_code].cost(call)
   end
 end
