@@ -16,6 +16,12 @@ post '/llamadas' do
   output
 end
 
+post '/reset' do
+  telco = Telco.new
+  status 200
+  { 'reset' => true }.to_json
+end
+
 get '/facturacion' do
   billing_input = input_adapter.interpret_billing(params)
   billing_information = telco.bill(billing_input)
