@@ -19,14 +19,10 @@ class Telco
     phone = billing_info['number']
     year = billing_info['year_month'][0..3].to_i
     month = billing_info['year_month'][4..5].to_i
+    base_cost = 100
 
     corresponding_calls = @call_registry.select { |call| call.phone == phone && call.month == month && call.year == year }
-    # result = @call_registry.select do |call|
-    #   (call.year == year) &&
-    #     (call.month == month) &&
-    #     (call.phone == phone)
-    # end
-    total_cost = 0
+    total_cost = base_cost
     corresponding_calls.each do |call|
       total_cost += call.cost
     end
