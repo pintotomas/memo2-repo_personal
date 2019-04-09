@@ -2,7 +2,7 @@ require 'rspec'
 require_relative '../app/model/telco'
 require_relative '../app/model/phone'
 require_relative '../app/model/call/local_call'
-
+require 'byebug'
 def make_call(telco, origin, destination, start_time, end_time)
   telco.call_cost('fechahora_inicio' => start_time, 'fechahora_fin' => end_time,
                   'numero_origen' => origin, 'numero_destino' => destination)

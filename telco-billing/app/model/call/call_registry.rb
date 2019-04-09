@@ -17,8 +17,6 @@ class CallRegistry
   end
 
   def select
-    # params is a dictionary of (k,v) with k being the attributes of the calls
-    # and v the values of that attributes that you want to select from the registry
     # returns a new call registry with the selected calls
     result = []
     each do |call|
