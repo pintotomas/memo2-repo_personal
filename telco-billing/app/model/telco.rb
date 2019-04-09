@@ -14,7 +14,20 @@ class Telco
     call.cost
   end
 
-  def bill(_billing_info)
-    [1, 3.2]
+  def bill(billing_info)
+    phone = billing_info['number']
+    year = billing_info['year_month'][0..3].to_i
+    month = billing_info['year_month'][4..5].to_i
+    result = @call_registry.select do |call|
+      (call.year == year) &&
+        (call.month == month) &&
+        (call.phone == phone)
+    end
+    total_cost = 0
+    result.each do |call|
+      total_cost += call.cost
+    end
+    calls_made = result.length
+    [calls_made, total_cost]
   end
 end
