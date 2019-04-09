@@ -16,7 +16,7 @@ class Telco
   end
 
   def bill(billing_info)
-    phone = billing_info['number']
+    phone = billing_info['number'].gsub(/\s+/, '')
     year = billing_info['year_month'][0..3].to_i
     month = billing_info['year_month'][4..5].to_i
     base_cost = 100
