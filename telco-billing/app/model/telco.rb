@@ -23,6 +23,5 @@ class Telco
     month = billing_info['year_month'][4..5].to_i
     corresponding_calls = @call_registry.select { |call| call.phone == phone && call.month == month && call.year == year }
     @biller.make_bill(corresponding_calls)
-
   end
 end
