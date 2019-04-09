@@ -4,9 +4,9 @@ require_relative '../minutes/minute_counter.rb'
 require_relative '../time_aux'
 
 class LocalCall < Call
-  def initialize(params)
+  def initialize(origin, destiny, start_time_stamp, end_time_stamp)
     # call_start_time and call_end_time must have yyyymmdd;hhmm
-    super(params)
+    super(origin, destiny, start_time_stamp, end_time_stamp)
     weekends_cost = 2.1
     weekday_night_cost = 1.8
     weekday_dawn_cost = 1.8

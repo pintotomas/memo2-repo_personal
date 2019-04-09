@@ -14,22 +14,22 @@ class CallFactory
     start_time_stamp = call_info['fechahora_inicio']
     end_time_stamp = call_info['fechahora_fin']
 
-    local_params = { 'origin' => origin, 'start' => start_time_stamp, 'end' => end_time_stamp }
+    #   local_params = { 'origin' => origin, 'start' => start_time_stamp, 'end' => end_time_stamp }
 
-    international_params = { 'origin' => origin, 'destination' => destination,
-                             'start' => start_time_stamp, 'end' => end_time_stamp }
+    #   international_params = { 'origin' => origin, 'destination' => destination,
+    #                           'start' => start_time_stamp, 'end' => end_time_stamp }
 
-    national_params = local_params
+    #   national_params = local_params
 
     call_classes =
       # If area codes are equal, we have a local or national call
       { true => { false => NationalCall, true => LocalCall },
         # If country codes are different, the area code doesnt matter
         false => { false => InternationalCall, true => InternationalCall } }
-    call_params = { NationalCall => national_params, LocalCall => local_params, InternationalCall => international_params }
+    #   call_params = { NationalCall => national_params, LocalCall => local_params, InternationalCall => international_params }
 
     call = call_classes[origin.same_country(destination)][origin.same_area_code(destination)]
-    params = call_params[call]
-    call.new(params)
+    #    params = call_params[call]
+    call.new(origin, destination, start_time_stamp, end_time_stamp)
   end
 end

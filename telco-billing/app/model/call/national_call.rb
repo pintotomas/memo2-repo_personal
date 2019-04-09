@@ -2,9 +2,9 @@ require_relative 'call'
 require_relative '../time_aux'
 require_relative '../minutes/minute_counter'
 class NationalCall < Call
-  def initialize(params)
+  def initialize(origin, destiny, start_time_stamp, end_time_stamp)
     # call_start_time and call_end_time must have yyyymmdd;hhmm
-    super(params)
+    super(origin, destiny, start_time_stamp, end_time_stamp)
     cost = 1.5
 
     @min_counter = MinuteCounter.new(cost)
