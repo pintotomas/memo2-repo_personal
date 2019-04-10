@@ -4,6 +4,9 @@ class Biller
   end
 
   def make_bill(call_registry, calculator)
+    # Calculates the total cost of the calls in call_registry
+    # returns a list with the quantity of the calls in the registry
+    # and the total cost for them
     total_cost = 0
     call_registry.each do |call|
       total_cost += calculator.cost(call)
