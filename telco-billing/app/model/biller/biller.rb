@@ -1,5 +1,3 @@
-require_relative 'call/call_registry'
-
 class Biller
   def initialize(base_cost)
     @base_cost = base_cost

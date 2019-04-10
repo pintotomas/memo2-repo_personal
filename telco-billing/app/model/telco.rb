@@ -1,8 +1,8 @@
 require 'time'
 require_relative 'call/call'
 require_relative 'call/call_registry'
-require_relative 'biller'
-require_relative 'phone'
+require_relative 'biller/biller'
+require_relative 'phone/phone'
 require_relative 'call_cost_calculator/call_cost_calculator'
 class Telco
   def initialize

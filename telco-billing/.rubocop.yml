@@ -34,3 +34,5 @@ Naming/UncommunicativeMethodParamName:
   Enabled: false
 RSpec/ExampleLength:
   Max: 7
+Style/GlobalVars:
+  Enabled: false

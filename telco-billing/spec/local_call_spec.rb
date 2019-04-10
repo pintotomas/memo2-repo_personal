@@ -1,7 +1,7 @@
 require 'rspec'
 require_relative '../app/model/telco'
 require_relative '../app/model/call/call'
-require_relative '../app/model/phone'
+require_relative '../app/model/phone/phone'
 require_relative '../app/model/call_cost_calculator/call_cost_calculator'
 
 describe 'Call' do

@@ -1,4 +1,5 @@
 require_relative '../../aux/functions'
+require_relative 'call_cost_constants'
 class NationalCallCostCalculator
   def initialize
     @base_cost = 20
@@ -9,8 +10,7 @@ class NationalCallCostCalculator
   def cost(call)
     start_time = call.call_start_time
     end_time = call.call_end_time
-    one_minute_in_seconds = 60
-    minutes_elapsed = (end_time - start_time) / one_minute_in_seconds
+    minutes_elapsed = (end_time - start_time) / $one_minute_in_seconds
     minutes_elapsed_discounting_free_minutes = minutes_elapsed - @free_minutes
     max(@base_cost, (minutes_elapsed_discounting_free_minutes * @minute_cost) + @base_cost)
   end
