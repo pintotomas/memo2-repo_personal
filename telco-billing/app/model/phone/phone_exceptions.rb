@@ -1,11 +1,11 @@
-class PhoneNumberCannotContainCharactersError < RuntimeError
+class PhoneNumberCannotContainCharactersError < TelcoException
 end
 
-class PhonesMustBeThirteenDigitsError < RuntimeError
+class PhonesMustBeThirteenDigitsError < TelcoException
 end
 
-class InvalidCountryCodeError < RuntimeError
+class InvalidCountryCodeError < TelcoException
 end
 
-class PhoneOriginNumberEqualsPhoneDestinationNumberError < RuntimeError
+class PhoneOriginNumberEqualsPhoneDestinationNumberError < TelcoException
 end

@@ -1,0 +1,2 @@
+class TelcoException < RuntimeError
+end

@@ -14,10 +14,8 @@ post '/llamadas' do
   output = output_adapter.present_call_cost(call_cost)
   status 201
   output
-  #  rescue InvalidCallStartOrEndTimeError, CallEndTimeBeforeStartTimeError, PhoneNumberCannotContainCharactersError,
-  # PhonesMustBeThirteenDigitsError, InvalidCountryCodeError, InvalidAreaCodeError, PhoneOriginNumberEqualsPhoneDestinationNumberError = err
-  #    output_adapter.present_error(err)
-  #  end
+  #  rescue TelcoException
+  #    output_adapter.present_error(TelcoException)
 end
 
 post '/reset' do
@@ -32,8 +30,6 @@ get '/facturacion' do
   output = output_adapter.present_bill(billing_information)
   status 200
   output
-  #  rescue IPhoneNumberCannotContainCharactersError, PhonesMustBeThirteenDigitsError,
-  # InvalidCountryCodeError, InvalidAreaCodeError, PhoneOriginNumberEqualsPhoneDestinationNumberError = err
-  #    output_adapter.present_error(err)
-  #  end
+  #  rescue TelcoException
+  #    output_adapter.present_error(TelcoException)
 end
