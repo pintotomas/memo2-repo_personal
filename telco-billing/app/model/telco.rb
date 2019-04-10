@@ -1,20 +1,23 @@
 require 'time'
-require_relative 'call/call_factory'
+require_relative 'call/call'
 require_relative 'call/call_registry'
 require_relative 'biller'
+require_relative 'phone'
+require_relative 'call_cost_calculator/call_cost_calculator'
 class Telco
   def initialize
-    @call_factory = CallFactory.new
     @call_registry = CallRegistry.new
     base_cost = 100
     @biller = Biller.new(base_cost)
+    @call_cost_calculator = CallCostCalculator.new
   end
 
   def call_cost(call_info)
     # Returns call cost
-    call = @call_factory.new_call(call_info)
+    call = Call.new(Phone.new(call_info['numero_origen']), Phone.new(call_info['numero_destino']),
+                    call_info['fechahora_inicio'], call_info['fechahora_fin'])
     @call_registry.push(call)
-    call.cost
+    @call_cost_calculator.cost(call)
   end
 
   def bill(billing_info)
@@ -22,6 +25,6 @@ class Telco
     year = billing_info['year_month'][0..3].to_i
     month = billing_info['year_month'][4..5].to_i
     corresponding_calls = @call_registry.select { |call| call.phone == phone && call.month == month && call.year == year }
-    @biller.make_bill(corresponding_calls)
+    @biller.make_bill(corresponding_calls, @call_cost_calculator)
   end
 end

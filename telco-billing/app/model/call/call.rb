@@ -6,7 +6,6 @@ class Call
     # params is a dictionary that contains the following keys:
     # origin and destination, both of Phone type
     # start and end, both time stamps
-    @minute_counters = []
     @call_start_time = Time.parse(start_time_stamp)
     @call_end_time = Time.parse(end_time_stamp)
     @origin = origin
@@ -17,14 +16,6 @@ class Call
   end
   attr_reader :call_start_time
   attr_reader :call_end_time
-
-  def cost
-    total_cost = 0
-    @minute_counters.each do |counter|
-      total_cost += counter.cost
-    end
-    total_cost
-  end
 
   def month
     @call_start_time.month
@@ -52,11 +43,5 @@ class Call
 
   def destination_area_code
     @destination.area_code
-  end
-
-  private
-
-  def process_call
-    raise SubclassResponsibility
   end
 end
