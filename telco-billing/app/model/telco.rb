@@ -4,6 +4,9 @@ require_relative 'call/call_registry'
 require_relative 'biller/biller'
 require_relative 'phone/phone'
 require_relative 'call_cost_calculator/call_cost_calculator'
+require_relative '../aux/functions'
+require_relative 'exceptions/telco_exceptions'
+
 class Telco
   def initialize
     @call_registry = CallRegistry.new
@@ -22,8 +25,13 @@ class Telco
 
   def bill(billing_info)
     phone = Phone.new(billing_info['number'])
-    year = billing_info['year_month'][0..3].to_i
-    month = billing_info['year_month'][4..5].to_i
+    year = billing_info['year_month'][0..3]
+    month = billing_info['year_month'][4..5]
+    raise InvalidBillingYear unless is_number? year
+    raise InvalidBillingMonth unless is_number? month
+
+    year = year.to_i
+    month = month.to_i
     corresponding_calls = @call_registry.select { |call| call.phone == phone.phone_number && call.month == month && call.year == year }
     @biller.make_bill(corresponding_calls, @call_cost_calculator)
   end

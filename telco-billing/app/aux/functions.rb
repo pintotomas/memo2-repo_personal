@@ -25,3 +25,9 @@ def count_seconds(time_start, time_end, params)
   end
   seconds_counter
 end
+
+def is_number?(string)
+  true if Float(string)
+rescue StandardError
+  false
+end

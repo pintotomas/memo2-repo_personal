@@ -1,6 +1,7 @@
 require 'rspec'
 require_relative '../app/model/telco'
 require_relative '../app/model/phone/phone'
+require_relative '../app/model/exceptions/telco_exceptions'
 require 'byebug'
 def make_call(telco, origin, destination, start_time, end_time)
   telco.call_cost('fechahora_inicio' => start_time, 'fechahora_fin' => end_time,
@@ -11,6 +12,14 @@ describe 'Telco' do
   let(:telco) { Telco.new }
 
   base_cost = 100
+
+  it 'Billing with an invalid year' do
+    expect { telco.bill('number' => '5401134330438', 'year_month' => '201x02') }.to raise_error(InvalidBillingYear)
+  end
+
+  it 'Billing with an invalid month' do
+    expect { telco.bill('number' => '5401134330438', 'year_month' => '20190x') }.to raise_error(InvalidBillingMonth)
+  end
 
   it 'Bill one month with only a local call' do
     telco.call_cost('fechahora_inicio' => '20190211;14:30', 'fechahora_fin' => '20190211;14:31',
