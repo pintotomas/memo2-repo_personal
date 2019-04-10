@@ -8,8 +8,8 @@ class NationalCallCostCalculator
   end
 
   def cost(call)
-    start_time = call.call_start_time
-    end_time = call.call_end_time
+    start_time = call.start_time
+    end_time = call.end_time
     minutes_elapsed = (end_time - start_time) / $one_minute_in_seconds
     minutes_elapsed_discounting_free_minutes = minutes_elapsed - @free_minutes
     max(@base_cost, (minutes_elapsed_discounting_free_minutes * @minute_cost) + @base_cost)

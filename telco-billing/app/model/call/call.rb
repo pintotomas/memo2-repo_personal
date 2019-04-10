@@ -6,21 +6,21 @@ class Call
     # params is a dictionary that contains the following keys:
     # origin and destination, both of Phone type
     # start and end, both time stamps
-    @call_start_time = Time.parse(start_time_stamp)
-    @call_end_time = Time.parse(end_time_stamp)
+    @start_time = Time.parse(start_time_stamp)
+    @end_time = Time.parse(end_time_stamp)
     raise PhoneOriginNumberEqualsPhoneDestinationNumberError unless origin.phone_number != destination.phone_number
 
     @origin = origin
     @destination = destination
-    raise CallEndTimeBeforeStartTimeError unless @call_start_time < @call_end_time
+    raise CallEndTimeBeforeStartTimeError unless @start_time < @end_time
   rescue ArgumentError
     raise InvalidCallStartOrEndTimeError
   end
-  attr_reader :call_start_time
-  attr_reader :call_end_time
+  attr_reader :start_time
+  attr_reader :end_time
 
   def month
-    @call_start_time.month
+    @start_time.month
   end
 
   def phone
@@ -28,7 +28,7 @@ class Call
   end
 
   def year
-    @call_start_time.year
+    @start_time.year
   end
 
   def origin_country

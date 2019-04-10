@@ -18,8 +18,8 @@ class LocalCallCostCalculator
                                                                                                'until' => $afternoon },
                   $friday => { 'since' => $morning, 'until' => $afternoon } }
 
-    start = call.call_start_time
-    finish = call.call_end_time
+    start = call.start_time
+    finish = call.end_time
     call_duration = finish - start
     call_seconds_during_weekends = count_seconds(start, finish, weekends)
     call_seconds_during_week_days = count_seconds(start, finish, week_days)
