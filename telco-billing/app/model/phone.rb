@@ -5,7 +5,7 @@ class Phone
     # the following three the area code and last, 8 numbers
 
     # delete spaces
-    string_number_info = string_number_info.gsub(/\s+/, '')
+    string_number_info = string_number_info.delete(" \t\r\n")
     valide_input(string_number_info)
     country_code_start = 0
     country_code_end = 1

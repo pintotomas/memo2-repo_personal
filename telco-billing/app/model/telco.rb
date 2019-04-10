@@ -21,7 +21,7 @@ class Telco
   end
 
   def bill(billing_info)
-    phone = billing_info['number'].gsub(/\s+/, '')
+    phone = billing_info['number'].delete(" \t\r\n")
     year = billing_info['year_month'][0..3].to_i
     month = billing_info['year_month'][4..5].to_i
     corresponding_calls = @call_registry.select { |call| call.phone == phone && call.month == month && call.year == year }
