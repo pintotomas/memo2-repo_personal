@@ -1,5 +1,5 @@
 require_relative '../../aux/functions'
-require_relative 'call_cost_constants'
+require_relative 'calculator_constants'
 class InternationalCallCostCalculator
   def initialize
     @costs = { '52' => 10, '55' => 6, '39' => 15 }

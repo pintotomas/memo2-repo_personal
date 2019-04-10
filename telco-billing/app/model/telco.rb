@@ -21,10 +21,10 @@ class Telco
   end
 
   def bill(billing_info)
-    phone = billing_info['number'].delete(" \t\r\n")
+    phone = Phone.new(billing_info['number'])
     year = billing_info['year_month'][0..3].to_i
     month = billing_info['year_month'][4..5].to_i
-    corresponding_calls = @call_registry.select { |call| call.phone == phone && call.month == month && call.year == year }
+    corresponding_calls = @call_registry.select { |call| call.phone == phone.phone_number && call.month == month && call.year == year }
     @biller.make_bill(corresponding_calls, @call_cost_calculator)
   end
 end

@@ -1,6 +1,6 @@
 require_relative '../../aux/functions'
 require 'byebug'
-require_relative 'call_cost_constants'
+require_relative 'calculator_constants'
 
 class LocalCallCostCalculator
   def initialize

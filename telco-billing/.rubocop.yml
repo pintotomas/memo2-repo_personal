@@ -36,3 +36,5 @@ RSpec/ExampleLength:
   Max: 7
 Style/GlobalVars:
   Enabled: false
+AllCops:
+  TargetRubyVersion: 2.2.0

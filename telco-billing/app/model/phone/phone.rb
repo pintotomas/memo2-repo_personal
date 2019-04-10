@@ -5,8 +5,6 @@ class Phone
     # receives a string containing the number information, the two first must be the country code,
     # the following three the area code and last, 8 numbers
 
-    # delete spaces
-
     string_number_info = string_number_info.delete(" \t\r\n")
     raise PhoneNumberCannotContainCharactersError unless string_number_info.scan(/\D/).empty?
     raise PhonesMustBeThirteenDigitsError unless string_number_info.length == $phone_number_digits
