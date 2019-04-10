@@ -13,9 +13,6 @@ describe 'Phone' do
   it 'Creating a new phone with invalid country code should raise exception' do
     expect { Phone.new('7911111111111') }.to raise_error(InvalidCountryCodeError)
   end
-  it 'Creating a new phone with invalid area code should raise exception' do
-    expect { Phone.new('5411111111111') }.to raise_error(InvalidAreaCodeError)
-  end
   it 'Phones with same country code are detected correctly' do
     p1 = Phone.new('54011111111 11')
     p2 = Phone.new('5401111 111112')

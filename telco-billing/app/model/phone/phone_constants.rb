@@ -5,5 +5,4 @@ $area_code_end = 4
 $phone_number_start = 5
 $phone_number_end = 12
 $valid_country_codes = %w[54 52 55 39]
-$valid_area_codes = %w[011 314 324 348]
 $phone_number_digits = 13

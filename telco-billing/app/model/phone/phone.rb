@@ -13,8 +13,6 @@ class Phone
     raise InvalidCountryCodeError unless $valid_country_codes.include? country_code
 
     area_code = string_number_info[$area_code_start..$area_code_end]
-    raise InvalidAreaCodeError unless $valid_area_codes.include? area_code
-
     phone_number = string_number_info[$phone_number_start..$phone_number_end]
 
     @country_code = country_code
