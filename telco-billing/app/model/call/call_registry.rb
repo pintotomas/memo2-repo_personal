@@ -1,19 +1,19 @@
 class CallRegistry
   def initialize(calls = [])
-    @call_registry = calls
+    @registry = calls
   end
 
   def push(call)
-    @call_registry << call
+    @registry << call
   end
 
   def each(&block)
-    @call_registry.each(&block)
+    @registry.each(&block)
     self # return the original array
   end
 
   def length
-    @call_registry.length
+    @registry.length
   end
 
   def select
