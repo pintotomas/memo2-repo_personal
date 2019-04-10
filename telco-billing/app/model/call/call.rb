@@ -8,6 +8,8 @@ class Call
     # start and end, both time stamps
     @call_start_time = Time.parse(start_time_stamp)
     @call_end_time = Time.parse(end_time_stamp)
+    raise PhoneOriginNumberEqualsPhoneDestinationNumberError unless origin.phone_number != destination.phone_number
+
     @origin = origin
     @destination = destination
     raise CallEndTimeBeforeStartTimeError unless @call_start_time < @call_end_time
