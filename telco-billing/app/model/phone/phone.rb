@@ -1,4 +1,4 @@
-require_relative '../exceptions/phone_exceptions'
+require_relative 'phone_exceptions'
 require_relative 'phone_constants'
 class Phone
   def initialize(string_number_info)
