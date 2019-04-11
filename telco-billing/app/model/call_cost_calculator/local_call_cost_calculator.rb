@@ -1,8 +1,8 @@
 require_relative '../../aux/functions'
-require 'byebug'
 require_relative 'calculator_constants'
+require_relative 'call_cost_calculator'
 
-class LocalCallCostCalculator
+class LocalCallCostCalculator < CallCostCalculator
   def initialize
     @weekends_cost = 2.1
     @weekday_night_cost = 1.8

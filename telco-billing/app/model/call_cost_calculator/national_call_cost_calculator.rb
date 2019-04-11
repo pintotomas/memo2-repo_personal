@@ -1,6 +1,7 @@
 require_relative '../../aux/functions'
 require_relative 'calculator_constants'
-class NationalCallCostCalculator
+require_relative 'call_cost_calculator'
+class NationalCallCostCalculator < CallCostCalculator
   def initialize
     @base_cost = 20
     @free_minutes = 5
