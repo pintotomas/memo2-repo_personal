@@ -28,13 +28,11 @@ RSpec/MultipleExpectations:
   Max: 3
 EndOfLine:
   Enabled: false
-Metrics/AbcSize:
+RSpec/ExampleLength:
+  Max: 8
+Style/GlobalVars:
   Enabled: false
 Naming/UncommunicativeMethodParamName:
   Enabled: false
-RSpec/ExampleLength:
-  Max: 7
-Style/GlobalVars:
+Metrics/AbcSize:
   Enabled: false
-AllCops:
-  TargetRubyVersion: 2.2.0
