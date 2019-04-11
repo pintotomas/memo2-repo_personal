@@ -4,6 +4,8 @@ require_relative '../app/model/phone/phone'
 require_relative '../app/model/exceptions/telco_exceptions'
 require 'byebug'
 def make_call(telco, origin, destination, start_time, end_time)
+  telco.register_call('fechahora_inicio' => start_time, 'fechahora_fin' => end_time,
+                      'numero_origen' => origin, 'numero_destino' => destination)
   telco.call_cost('fechahora_inicio' => start_time, 'fechahora_fin' => end_time,
                   'numero_origen' => origin, 'numero_destino' => destination)
 end
@@ -22,8 +24,7 @@ describe 'Telco' do
   end
 
   it 'Bill one month with only a local call' do
-    telco.call_cost('fechahora_inicio' => '20190211;14:30', 'fechahora_fin' => '20190211;14:31',
-                    'numero_origen' => '5401134330438', 'numero_destino' => '5401112345679')
+    make_call(telco, '5401134330438', '5401112345679', '20190211;14:30', '20190211;14:31')
     res = telco.bill('number' => '5401134330438', 'year_month' => '201902')
     calls_made = 1
     total = 3.2 + base_cost

@@ -15,11 +15,17 @@ class Telco
     @call_cost_calculator = CallCostCalculatorCenter.new
   end
 
+  def register_call(call_info)
+    call = Call.new(Phone.new(call_info['numero_origen']), Phone.new(call_info['numero_destino']),
+                    call_info['fechahora_inicio'], call_info['fechahora_fin'])
+    @call_registry.push(call)
+  end
+
   def call_cost(call_info)
     # Returns call cost
     call = Call.new(Phone.new(call_info['numero_origen']), Phone.new(call_info['numero_destino']),
                     call_info['fechahora_inicio'], call_info['fechahora_fin'])
-    @call_registry.push(call)
+    #  @call_registry.push(call)
     @call_cost_calculator.cost(call)
   end
 

@@ -10,6 +10,7 @@ output_adapter = JSONOutputAdapter.new
 post '/llamadas' do
   input = request.body.read
   call_input = input_adapter.interpret_call(input)
+  telco.register_call(call_input)
   call_cost = telco.call_cost(call_input)
   output = output_adapter.present_call_cost(call_cost)
   status 201
