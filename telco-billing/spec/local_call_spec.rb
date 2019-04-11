@@ -2,10 +2,10 @@ require 'rspec'
 require_relative '../app/model/telco'
 require_relative '../app/model/call/call'
 require_relative '../app/model/phone/phone'
-require_relative '../app/model/call_cost_calculator/call_cost_calculator'
+require_relative '../app/model/call_cost_calculator/call_cost_calculator_center'
 
 describe 'Call' do
-  let(:cost_calculator) { CallCostCalculator.new }
+  let(:cost_calculator) { CallCostCalculatorCenter.new }
   let(:origin) { Phone.new('5401167576689') }
   let(:destination) { Phone.new('5401134033434') }
 

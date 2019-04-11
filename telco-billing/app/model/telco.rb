@@ -3,7 +3,7 @@ require_relative 'call/call'
 require_relative 'call/call_registry'
 require_relative 'biller/biller'
 require_relative 'phone/phone'
-require_relative 'call_cost_calculator/call_cost_calculator'
+require_relative 'call_cost_calculator/call_cost_calculator_center'
 require_relative '../aux/functions'
 require_relative 'exceptions/telco_exceptions'
 
@@ -12,7 +12,7 @@ class Telco
     @call_registry = CallRegistry.new
     base_cost = 100
     @biller = Biller.new(base_cost)
-    @call_cost_calculator = CallCostCalculator.new
+    @call_cost_calculator = CallCostCalculatorCenter.new
   end
 
   def call_cost(call_info)

@@ -2,7 +2,7 @@ require_relative 'international_call_cost_calculator'
 require_relative 'national_call_cost_calculator'
 require_relative 'local_call_cost_calculator'
 require_relative 'call_cost_calculator_constants'
-class CallCostCalculator
+class CallCostCalculatorCenter
   def initialize
     @international_call_cost_calculator = InternationalCallCostCalculator.new
     @national_call_cost_calculator = NationalCallCostCalculator.new

@@ -1,10 +1,10 @@
 require 'rspec'
 require_relative '../app/model/call/call'
 require_relative '../app/model/phone/phone'
-require_relative '../app/model/call_cost_calculator/call_cost_calculator'
+require_relative '../app/model/call_cost_calculator/call_cost_calculator_center'
 
 describe 'Call' do
-  let(:cost_calculator) { CallCostCalculator.new }
+  let(:cost_calculator) { CallCostCalculatorCenter.new }
 
   it 'National call of 1 minute cost' do
     national_call = Call.new(Phone.new('54 011 5555 6666'), Phone.new('54 314 5555 6666'), '20190211;14:30', '20190211;14:31')
