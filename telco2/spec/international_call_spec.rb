@@ -1,7 +1,6 @@
 require 'rspec'
 require_relative '../app/model/international_call'
 require 'date'
-require 'byebug'
 describe 'InternationalCall' do
   context 'when call is to north america' do
     phone_number_destiny = PhoneNumber.new('5201122223333')
