@@ -1,7 +1,7 @@
 require 'rspec'
 require_relative '../app/model/international_call'
 require 'date'
-
+require 'byebug'
 describe 'InternationalCall' do
   context 'when call is to north america' do
     phone_number_destiny = PhoneNumber.new('5201122223333')
@@ -28,6 +28,14 @@ describe 'InternationalCall' do
 
       call = InternationalCall.new(phone_number_destiny, start_date_time, end_date_time)
       expect(call.cost).to eq 5
+    end
+    it 'cost of a call that lasts ten minutes should be 50 (weekend)' do
+      # byebug
+      start_date_time = DateTime.new(2019, 2, 10, 18)
+      end_date_time = DateTime.new(2019, 2, 10, 18, 10)
+
+      call = InternationalCall.new(phone_number_destiny, start_date_time, end_date_time)
+      expect(call.cost).to eq 50
     end
   end
 
