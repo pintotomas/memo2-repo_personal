@@ -30,7 +30,7 @@ describe 'FriendsPromotion' do
     end
   end
 
-  context 'when asking for the price of a call to a friend' do
+  context 'when asking for the price of a call' do
     friends_promotion = FriendsPromotion.new
     friend_phone_number = PhoneNumber.new('5401155556666')
     random = PhoneNumber.new('5401103034567')
