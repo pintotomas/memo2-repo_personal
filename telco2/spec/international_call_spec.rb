@@ -110,5 +110,12 @@ describe 'InternationalCall' do
       call = InternationalCall.new(phone_number_destiny, start_date_time, end_date_time)
       expect(call.cost).to eq 15
     end
+    it 'cost of a call that lasts two minutes should be 15 (weekend)' do
+      start_date_time = DateTime.new(2019, 2, 10, 9)
+      end_date_time = DateTime.new(2019, 2, 10, 9, 2)
+
+      call = InternationalCall.new(phone_number_destiny, start_date_time, end_date_time)
+      expect(call.cost).to eq 15
+    end
   end
 end
