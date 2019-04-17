@@ -7,7 +7,6 @@ describe 'InternationalCall' do
     phone_number_destiny = PhoneNumber.new('5201122223333')
 
     it 'cost of a call that lasts one minute should be 10 (week day)' do
-      # byebug
       start_date_time = DateTime.new(2019, 2, 11, 18)
       end_date_time = DateTime.new(2019, 2, 11, 18, 1)
 
