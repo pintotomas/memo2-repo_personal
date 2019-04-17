@@ -90,6 +90,7 @@ DEPENDENCIES
   rake
   rb-readline
   rspec
+  rspec-mocks
   rubocop
   rubocop-rspec
   sinatra (= 1.4.7)
