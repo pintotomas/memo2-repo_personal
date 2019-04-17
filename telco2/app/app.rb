@@ -12,6 +12,9 @@ set :environment, :production
 phone_organizer = PhonesOrganizer.new
 billing = Billing.new(phone_organizer)
 
+put '/numero' do
+end
+
 post '/llamadas' do
   content_type :json
 
