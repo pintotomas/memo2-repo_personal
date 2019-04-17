@@ -14,4 +14,8 @@ class FriendsPromotion
 
     @friends << phone
   end
+
+  def cost(_call)
+    0
+  end
 end
