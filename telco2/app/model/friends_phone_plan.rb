@@ -1,5 +1,5 @@
 require_relative 'errors/friend_promotion_limit_reached'
-class FriendsPromotion
+class FriendsPhonePlan
   FRIEND_LIMIT = 3
   FRIEND_CALL_COST = 0
   def initialize
