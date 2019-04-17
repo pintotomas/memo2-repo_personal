@@ -7,6 +7,7 @@ describe 'InternationalCall' do
     phone_number_destiny = PhoneNumber.new('5201122223333')
 
     it 'cost of a call that lasts one minute should be 10 (week day)' do
+      # byebug
       start_date_time = DateTime.new(2019, 2, 11, 18)
       end_date_time = DateTime.new(2019, 2, 11, 18, 1)
 
@@ -30,12 +31,18 @@ describe 'InternationalCall' do
       expect(call.cost).to eq 5
     end
     it 'cost of a call that lasts ten minutes should be 50 (weekend)' do
-      # byebug
       start_date_time = DateTime.new(2019, 2, 10, 18)
       end_date_time = DateTime.new(2019, 2, 10, 18, 10)
 
       call = InternationalCall.new(phone_number_destiny, start_date_time, end_date_time)
       expect(call.cost).to eq 50
+    end
+    it 'cost of a call that lasts two minutes and starts on weekend and ends on weekday' do
+      start_date_time = DateTime.new(2019, 2, 10, 23, 59)
+      end_date_time = DateTime.new(2019, 2, 11, 0o0, 0o1)
+
+      call = InternationalCall.new(phone_number_destiny, start_date_time, end_date_time)
+      expect(call.cost).to eq 15
     end
   end
 

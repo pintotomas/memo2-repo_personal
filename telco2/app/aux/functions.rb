@@ -1,3 +1,4 @@
+require 'time'
 def count_seconds(time_start, time_end, params)
   # time_start and time_end must be Time objects
   # Counts the seconds between time_start and time_end that satisfy params

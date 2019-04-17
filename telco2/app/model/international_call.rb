@@ -13,11 +13,8 @@ class InternationalCall
     @country_code = phone_number_destiny.country_code
     @start_date_time = start_date_time
     @end_date_time = end_date_time
-    weekends_info = { 0 => { 'since' => 0, 'until' => 23 }, 6 => { 'since' => 0, 'until' => 23 } }
-    @weekend_minutes_call_duration = count_seconds(@start_date_time.to_time,
-                                                   @end_date_time.to_time, weekends_info) / 60
-    total_duration = (end_date_time.to_time - start_date_time.to_time) / 60
-    @week_call_duration = total_duration - @weekend_minutes_call_duration
+    weekend_call_duration
+    week_call_duration
   end
 
   def cost
@@ -25,5 +22,21 @@ class InternationalCall
     weekends_cost = @weekend_minutes_call_duration * MIN_COST_PER_COUNTRY_CODE[@country_code] *
                     WEEKENDS_DISCOUNT
     week_cost + weekends_cost
+  end
+
+  private
+
+  def weekend_call_duration
+    weekends_info = { 0 => { 'since' => 0, 'until' => 23 }, 6 => { 'since' => 0, 'until' => 23 } }
+    @weekend_minutes_call_duration =
+      count_seconds((@start_date_time + 3 / 24.0).to_time,
+                    (@end_date_time + 3 / 24.0).to_time, weekends_info) / 60
+  end
+
+  def week_call_duration
+    start = (@end_date_time + 3 / 24.0).to_time
+    finish = (@start_date_time + 3 / 24.0).to_time
+    total_duration = (start - finish) / 60
+    @week_call_duration = total_duration - @weekend_minutes_call_duration
   end
 end
