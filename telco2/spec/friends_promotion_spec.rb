@@ -5,5 +5,8 @@ describe 'FriendsPromotion' do
     it 'Cost of the plan' do
       expect(friends_promotion.base_cost).to eq 100
     end
+    it 'Name of the plan' do
+      expect(friends_promotion.name).to eq 'amigos'
+    end
   end
 end
