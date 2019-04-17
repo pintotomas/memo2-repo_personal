@@ -6,7 +6,7 @@ describe 'InternationalCall' do
   context 'when call is to north america' do
     phone_number_destiny = PhoneNumber.new('5201122223333')
 
-    it 'cost of a call that lasts one minute should be 10' do
+    it 'cost of a call that lasts one minute should be 10 (week day)' do
       start_date_time = DateTime.new(2019, 2, 11, 18)
       end_date_time = DateTime.new(2019, 2, 11, 18, 1)
 
@@ -14,7 +14,7 @@ describe 'InternationalCall' do
       expect(call.cost).to eq 10
     end
 
-    it 'cost of a call that lasts ten minutes should be 100' do
+    it 'cost of a call that lasts ten minutes should be 100 (week day)' do
       start_date_time = DateTime.new(2019, 2, 11, 18)
       end_date_time = DateTime.new(2019, 2, 11, 18, 10)
 
@@ -26,7 +26,7 @@ describe 'InternationalCall' do
   context 'when call is to rest of america' do
     phone_number_destiny = PhoneNumber.new('5501190187236')
 
-    it 'cost of a call that lasts one minute should be 6' do
+    it 'cost of a call that lasts one minute should be 6 (week day)' do
       start_date_time = DateTime.new(2019, 2, 11, 18)
       end_date_time = DateTime.new(2019, 2, 11, 18, 1)
 
@@ -34,7 +34,7 @@ describe 'InternationalCall' do
       expect(call.cost).to eq 6
     end
 
-    it 'cost of a call that lasts five minutes should be 30' do
+    it 'cost of a call that lasts five minutes should be 30 (week day)' do
       start_date_time = DateTime.new(2019, 2, 11, 10)
       end_date_time = DateTime.new(2019, 2, 11, 10, 5)
 
@@ -46,7 +46,7 @@ describe 'InternationalCall' do
   context 'when call is to rest of the world' do
     phone_number_destiny = PhoneNumber.new('3901100559922')
 
-    it 'cost of a call that lasts one minute should be 15' do
+    it 'cost of a call that lasts one minute should be 15 (week day)' do
       start_date_time = DateTime.new(2019, 1, 11, 9)
       end_date_time = DateTime.new(2019, 1, 11, 9, 1)
 
