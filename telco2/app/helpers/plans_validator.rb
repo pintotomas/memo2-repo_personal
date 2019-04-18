@@ -7,7 +7,8 @@ class PlansValidator
   def validate_input(input)
     validate_input_names(input)
     validate_input_plan(input)
-    validate_amigos_plan_parameter(input)
+    validate_amigos_plan_parameter(input) if input['plan'] == 'amigos'
+    validate_turista_plan_parameters(input) if input['plan'] == 'turista'
   end
 
   private
@@ -22,6 +23,10 @@ class PlansValidator
   end
 
   def validate_amigos_plan_parameter(input)
-    raise MissingArgumentError, 'Missing amigos numbers parameter for amigos plan' unless input['plan'] != 'amigos'
+    raise MissingArgumentError, 'Missing amigos numbers parameter for amigos plan' unless input.include?('amigos')
+  end
+
+  def validate_turista_plan_parameters(input)
+    raise MissingArgumentError, 'Missing country code number parameter for turista plan' unless input.include?('pais')
   end
 end

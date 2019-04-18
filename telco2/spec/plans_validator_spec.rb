@@ -38,4 +38,13 @@ describe 'PlansValidator' do
       end.to raise_error(MissingArgumentError)
     end
   end
+
+  context 'when registering a turista plan without international code of the plan' do
+    it 'raises missing argument error' do
+      input = JSON.parse('{ "numero": "54 011 4444 1111", "plan": "turista" }')
+      expect do
+        validator.validate_input(input)
+      end.to raise_error(MissingArgumentError)
+    end
+  end
 end
