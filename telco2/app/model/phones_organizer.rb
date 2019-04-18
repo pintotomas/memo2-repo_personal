@@ -32,4 +32,8 @@ class PhonesOrganizer
 
     @plans[phone_number].name
   end
+
+  def plan(phone_number)
+    @plans[phone_number]
+  end
 end
