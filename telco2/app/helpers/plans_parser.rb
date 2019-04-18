@@ -18,8 +18,10 @@ class PlansParser
 
   private
 
-  def new_turista_plan(_client_organizer)
-    raise 'to be implemented'
+  def new_turista_plan(client_organizer)
+    country = @input['pais']
+    owner_number = @input['numero'].delete(' ')
+    client_organizer.register_plan(owner_number, 'turista', country)
   end
 
   def new_amigos_plan(client_organizer)
