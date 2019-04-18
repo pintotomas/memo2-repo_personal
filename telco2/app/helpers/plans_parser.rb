@@ -13,7 +13,7 @@ class PlansParser
   end
 
   def actual_plan(client_organizer)
-    client_organizer.actual_plan(@input['numero'].delete(' '))
+    client_organizer.actual_plan_name(@input['numero'].delete(' '))
   end
 
   private
