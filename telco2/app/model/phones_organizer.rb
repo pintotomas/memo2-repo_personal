@@ -1,5 +1,6 @@
 require_relative 'phone_number'
 require_relative 'friends_phone_plan'
+require_relative 'basic_phone_plan'
 require_relative 'errors/only_one_plan_per_phone'
 class PhonesOrganizer
   def initialize
@@ -10,6 +11,7 @@ class PhonesOrganizer
   def find_or_create_phone(number)
     return @phones[number] if @phones.include?(number)
 
+    @plans[number] = BasicPhonePlan.new
     @phones[number] = PhoneNumber.new(number)
   end
 
