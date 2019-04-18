@@ -5,36 +5,25 @@ require_relative '../app/model/local_call'
 require 'rspec/mocks'
 require 'byebug'
 describe 'FriendsPhonePlan' do
-  context 'when plan has been created' do
-    friends_phone_plan = FriendsPhonePlan.new
-    it 'Cost of the plan' do
-      expect(friends_phone_plan.base_cost).to eq 200
-    end
-    it 'Name of the plan' do
-      expect(friends_phone_plan.name).to eq 'amigos'
-    end
+  friends_phone_plan = FriendsPhonePlan.new([])
+  it 'Cost of the plan' do
+    expect(friends_phone_plan.base_cost).to eq 200
+  end
+  it 'Name of the plan' do
+    expect(friends_phone_plan.name).to eq 'amigos'
   end
 
-  context 'when adding friends' do
-    friends_phone_plan = FriendsPhonePlan.new
-    it 'adding more friends than the limit causes FriendPromotionLimitReached' do
-      friends_phone_plan.add_friend(instance_double('phone'))
-      friends_phone_plan.add_friend(instance_double('phone'))
-      friends_phone_plan.add_friend(instance_double('phone'))
-
-      expect do
-        friends_phone_plan.add_friend(
-          instance_double('phone')
-        )
-      end .to raise_error(FriendPromotionLimitReached)
-    end
+  it 'adding more friends than the limit causes FriendPromotionLimitReached' do
+    friends = [instance_double('phone'), instance_double('phone'), instance_double('phone'),
+               instance_double('phone'), instance_double('phone')]
+    expect { FriendsPhonePlan.new(friends) }.to raise_error(FriendPromotionLimitReached)
   end
 
   context 'when asking for the price of a call' do
-    friends_phone_plan = FriendsPhonePlan.new
     friend_phone_number = PhoneNumber.new('5401155556666')
+    friends_phone_plan = FriendsPhonePlan.new([friend_phone_number])
+
     random = PhoneNumber.new('5401103034567')
-    friends_phone_plan.add_friend(friend_phone_number)
     start_date_time = DateTime.new(2019, 3, 11, 14)
     end_date_time = DateTime.new(2019, 3, 11, 14, 1)
     call_to_friend = LocalCall.new(friend_phone_number, start_date_time, end_date_time)
