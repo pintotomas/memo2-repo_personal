@@ -47,4 +47,13 @@ describe 'PlansValidator' do
       end.to raise_error(MissingArgumentError)
     end
   end
+
+  context 'when registering an amigos plan with invalid friends phone numbers' do
+    it 'raises missing argument error' do
+      input = JSON.parse('{ "numero": "54 011 4444 1111", "plan": "amigos", "amigos":"54011x3334444,5401133335555,5401133336666" }')
+      expect do
+        validator.validate_input(input)
+      end.to raise_error(WrongArgumentFormat)
+    end
+  end
 end

@@ -3,6 +3,7 @@ require_relative 'errors/wrong_argument_format'
 
 class PlansValidator
   VALID_PLANS = %w[amigos turista].freeze
+  PHONE_FORMAT = /^\d{13,13}$/.freeze
 
   def validate_input(input)
     validate_input_names(input)
@@ -24,6 +25,11 @@ class PlansValidator
 
   def validate_amigos_plan_parameter(input)
     raise MissingArgumentError, 'Missing amigos numbers parameter for amigos plan' unless input.include?('amigos')
+
+    friend_numbers = input['amigos'].split(',')
+    friend_numbers.each do |number|
+      raise WrongArgumentFormat, 'Wrong friend number format' unless number.match(PHONE_FORMAT)
+    end
   end
 
   def validate_turista_plan_parameters(input)
