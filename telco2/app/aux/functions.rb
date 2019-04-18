@@ -26,3 +26,8 @@ end
 def max(param1, param2)
   param1 > param2 ? param1 : param2
 end
+
+def to_time(datetime)
+  Time.new(datetime.year, datetime.month, datetime.day,
+           datetime.hour, datetime.minute, datetime.second)
+end

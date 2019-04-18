@@ -1,5 +1,6 @@
 require_relative '../aux/functions'
 require 'time'
+
 class InternationalCall
   DAY_DURATION = 24
   HOUR_DURATION = 60
@@ -30,9 +31,9 @@ class InternationalCall
 
   def weekend_call_duration
     weekends_info = { 0 => { 'since' => 0, 'until' => 23 }, 6 => { 'since' => 0, 'until' => 23 } }
-    @weekend_minutes_call_duration =
-      count_seconds((@start_date_time + (3.0 / 24.0)).to_time,
-                    (@end_date_time + (3.0 / 24.0)).to_time, weekends_info) / 60
+    start = to_time(@start_date_time)
+    finish = to_time(@end_date_time)
+    @weekend_minutes_call_duration = count_seconds(start, finish, weekends_info) / 60
   end
 
   def week_call_duration
