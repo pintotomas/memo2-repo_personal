@@ -16,9 +16,13 @@ billing = Billing.new(phone_organizer)
 put '/numero' do
   conten_type :json
 
-  #  parser = PlansParser.new
-
-  #  input = JSON.parse(request.body.read)
+  input = JSON.parse(request.body.read)
+  parser = PlansParser.new(input)
+  old_plan = parser.actual_plan(phone_organizer)
+  parser.register_new_plan(phone_organizer)
+  actual_plan = parser.actual_plan(phone_organizer)
+  status 201
+  { numero: input['numero'], plan_actual: actual_plan, plan_anterior: old_plan }
 end
 
 post '/llamadas' do
