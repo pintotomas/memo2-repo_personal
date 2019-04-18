@@ -10,7 +10,6 @@ class PhonesOrganizer
   def find_or_create_phone(number)
     return @phones[number] if @phones.include?(number)
 
-    @plans[number] = BasicPhonePlan.new
     @phones[number] = PhoneNumber.new(number)
   end
 
@@ -31,6 +30,8 @@ class PhonesOrganizer
   end
 
   def plan(phone_number)
+    return BasicPhonePlan.new unless @plans.key? phone_number
+
     @plans[phone_number]
   end
 end

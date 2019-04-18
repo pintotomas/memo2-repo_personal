@@ -18,7 +18,9 @@ class PlansParser
 
   private
 
-  def new_turista_plan(client_organizer); end
+  def new_turista_plan(_client_organizer)
+    raise 'to be implemented'
+  end
 
   def new_amigos_plan(client_organizer)
     friends = @input['amigos'].split(',')
