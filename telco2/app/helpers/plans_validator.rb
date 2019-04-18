@@ -7,6 +7,7 @@ class PlansValidator
   def validate_input(input)
     validate_input_names(input)
     validate_input_plan(input)
+    validate_amigos_plan_parameter(input)
   end
 
   private
@@ -18,5 +19,9 @@ class PlansValidator
 
   def validate_input_plan(input)
     raise WrongArgumentFormat, 'Non-existing plan' unless VALID_PLANS.include?(input['plan'])
+  end
+
+  def validate_amigos_plan_parameter(input)
+    raise MissingArgumentError, 'Missing amigos numbers parameter for amigos plan' unless input['plan'] != 'amigos'
   end
 end
