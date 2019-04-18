@@ -52,3 +52,20 @@ NationalCall:
 InternationalCall:
 
   - Bien, salvo que esta utilizando un hash con strings y numeros magicos
+
+En cuanto lo que hice yo: 
+
+  - Para anadir el soporte de planes se me ocurrio algo muy parecido a la idea de Emilio para el cobro de tarifas, solo que ahora cada plan sabe el como cobrar una llamada o
+    si se lo debe dejar a los tarifadores (en este TP se uso herencia, asi que no hay tarifadores y le dejamos a la llamada la responsabilidad de devolver el costo si no es soportada por el plan)
+  - En cuanto al cambio de costo en las llamadas internacionales durante el fin de semana, tal vez se esperaba que reutilizara toda la logica de HourCost, HourHandler que 
+    se uso en LocalCall para este tp, pero habia un problema (que quisa no era tan dificil de solucionar) que era que esto estaba atado a las llamadas locales, los precios 
+    son constantes y no son customizables por lo que tendria que haber hecho un refactor. Me parecio una implementacion algo compleja y tenia miedo de romper muchas cosas y 
+    no llegar con la entrega, asi que reutilize una funcion auxiliar que implemente en mi tp para calcular cuanto tiempo transcurre en ciertos dias y horarios (esta informacion se pasa por parametro a la funcion)
+
+  - Tuve un problema con los builds, ver commit 2ebed646, lo vuelvo a escribir aca por las dudas: 
+
+    en gitlab estos tests no me corrian previamente cuando estaba usando to_time del objeto DateTime, fue extraño, en mi compu si funcionaba. Capaz tiene que ver con que al to_time de DateTime tenia que ajustarlo agregando 3 horas porque si no por ejemplo si transformaba una fecha con horario 3 PM el to_time(de DateTime) me devolvia un objeto Time con horario 12 PM.
+    Aclaro que estoy haciendo esta transformacion de DateTime a Time porque estoy usando una funcion auxiliar que use en mi TP y que no me sirve con DateTime, ya que el operador + en DateTime incrementa las horas, mientras que en Time incrementa minutos.
+
+    los builds que se rompian por causa de esto son los que van desde el
+    #57300751 hasta #57311136. No era intencional, no lo reproducia mi maquina este error, los tests estaban pasando como correspondia.
