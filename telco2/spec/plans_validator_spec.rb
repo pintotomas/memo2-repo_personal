@@ -11,4 +11,13 @@ describe 'PlansValidator' do
       end.to raise_error(MissingArgumentError)
     end
   end
+
+  context 'when missing numero argument' do
+    it 'raises missing argument error' do
+      input = JSON.parse('{"plan":"amigos", "amigos":"5401133334444,5401133335555,5401133336666" }')
+      expect do
+        validator.validate_input(input)
+      end.to raise_error(MissingArgumentError)
+    end
+  end
 end

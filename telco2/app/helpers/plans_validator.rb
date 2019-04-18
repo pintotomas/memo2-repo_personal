@@ -10,5 +10,6 @@ class PlansValidator
 
   def validate_input_names(input)
     raise MissingArgumentError, 'Missing plan name' unless input.include?('plan')
+    raise MissingArgumentError, 'Missing number to register the plan' unless input.include?('numero')
   end
 end
