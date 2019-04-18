@@ -7,6 +7,7 @@ class InternationalCall
   MIN_COST_PER_COUNTRY_CODE = { '52' => 10, '55' => 6, '39' => 15 }.freeze
 
   attr_reader :start_date_time
+  attr_reader :phone_number_destiny
 
   def initialize(phone_number_destiny, start_date_time, end_date_time)
     @phone_number_destiny = phone_number_destiny

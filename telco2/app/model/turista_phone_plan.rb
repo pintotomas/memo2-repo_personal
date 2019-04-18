@@ -7,6 +7,8 @@ class TuristaPhonePlan
   attr_reader :base_cost
   attr_reader :name
   def cost(call)
-    call.cost
+    return call.cost unless call.phone_number_destiny.country_code == @country_code
+
+    20
   end
 end
