@@ -1,6 +1,7 @@
 require_relative 'phone_number'
 require_relative 'friends_phone_plan'
 require_relative 'basic_phone_plan'
+require_relative 'turista_phone_plan'
 class PhonesOrganizer
   def initialize
     @phones = {}
@@ -19,7 +20,7 @@ class PhonesOrganizer
   end
 
   def register_plan(number, plan_name, plan_parameters)
-    plans = { 'amigos' => FriendsPhonePlan }
+    plans = { 'amigos' => FriendsPhonePlan, 'turista' => TuristaPhonePlan }
     @plans[number] = plans[plan_name].new(plan_parameters)
   end
 

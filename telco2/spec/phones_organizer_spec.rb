@@ -14,5 +14,9 @@ describe 'PhoneOrganizer' do
       phone_organizer.register_plan('5491103030404', 'amigos', %w[5401123234242 5401102020303])
       expect(phone_organizer.plan('5491103030404').name).to eq 'amigos'
     end
+    it 'changing to plan turista, actual plan name should change too' do
+      phone_organizer.register_plan('5491103030404', 'turista', '55')
+      expect(phone_organizer.plan('5491103030404').name).to eq 'turista'
+    end
   end
 end
