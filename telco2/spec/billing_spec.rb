@@ -28,6 +28,20 @@ describe 'Billing' do
     end
   end
 
+  context 'when a number has a calls in the month and has an amigo suscription' do
+    it 'price of bill should be 200 if call is to a friend' do
+      phone_organizer.find_or_create_phone(number)
+      friends = ['5401168158752']
+      phone_organizer.register_plan(number, 'amigos', friends)
+
+      phone_number_origin = phone_organizer.find_or_create_phone(number)
+      phone_number_destiny = phone_organizer.find_or_create_phone('5401168158752')
+      phone_number_origin.make_call(phone_number_destiny, DateTime.new(2019, 1, 1, 10),
+       DateTime.new(2019, 1, 1, 10, 1))
+      expect(billing.calculate_price(number, month)).to eq 200
+    end
+  end
+
   context 'when a number has one local call of a minute in the month' do
     it 'price of bill should be 103.2' do
       phone_number_origin = phone_organizer.find_or_create_phone(number)

@@ -13,7 +13,7 @@ class FriendsPhonePlan
   attr_reader :name
 
   def cost(call)
-    return call.cost unless is_friend? call.phone_number_destiny
+    return call.cost unless is_friend? call.phone_number_destiny.number
 
     FRIEND_CALL_COST
   end
