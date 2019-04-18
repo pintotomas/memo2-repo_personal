@@ -5,6 +5,7 @@ require_relative 'model/billing'
 require_relative 'helpers/call_parser'
 require_relative 'helpers/billing_parser'
 require_relative 'helpers/errors/request_input_error'
+require_relative 'helpers/plans_parser'
 require_relative 'model/errors/call_error'
 
 set :environment, :production
@@ -13,6 +14,11 @@ phone_organizer = PhonesOrganizer.new
 billing = Billing.new(phone_organizer)
 
 put '/numero' do
+  conten_type :json
+
+  # parser = PlansParser.new
+
+  #  input = JSON.parse(request.body.read)
 end
 
 post '/llamadas' do
