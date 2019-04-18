@@ -37,7 +37,7 @@ describe 'Billing' do
       phone_number_origin = phone_organizer.find_or_create_phone(number)
       phone_number_destiny = phone_organizer.find_or_create_phone('5401168158752')
       phone_number_origin.make_call(phone_number_destiny, DateTime.new(2019, 1, 1, 10),
-       DateTime.new(2019, 1, 1, 10, 1))
+                                    DateTime.new(2019, 1, 1, 10, 1))
       expect(billing.calculate_price(number, month)).to eq 200
     end
   end

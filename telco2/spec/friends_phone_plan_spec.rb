@@ -25,7 +25,8 @@ describe 'FriendsPhonePlan' do
     random = '5401103034567'
     start_date_time = DateTime.new(2019, 3, 11, 14)
     end_date_time = DateTime.new(2019, 3, 11, 14, 1)
-    call_to_friend = LocalCall.new(PhoneNumber.new(friend_phone_number), start_date_time, end_date_time)
+    call_to_friend = LocalCall.new(PhoneNumber.new(friend_phone_number),
+                                   start_date_time, end_date_time)
     call_to_random = LocalCall.new(PhoneNumber.new(random), start_date_time, end_date_time)
     it 'price of call to friend should be 0' do
       friend_cost = friends_phone_plan.cost(call_to_friend)
