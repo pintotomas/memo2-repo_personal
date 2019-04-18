@@ -1,9 +1,9 @@
 require_relative 'errors/friend_promotion_limit_reached'
 class FriendsPhonePlan
-  FRIEND_LIMIT = 4
+  FRIEND_LIMIT = 3
   FRIEND_CALL_COST = 0
   def initialize(friends)
-    raise FriendPromotionLimitReached unless friends.length < FRIEND_LIMIT
+    raise FriendPromotionLimitReached unless friends.length <= FRIEND_LIMIT
 
     @base_cost = 200
     @name = 'amigos'
