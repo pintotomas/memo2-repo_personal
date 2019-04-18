@@ -1,4 +1,5 @@
 require_relative '../aux/functions'
+require_relative 'time_constants'
 require 'time'
 
 class InternationalCall
@@ -30,16 +31,18 @@ class InternationalCall
   private
 
   def weekend_call_duration
-    weekends_info = { 0 => { 'since' => 0, 'until' => 23 }, 6 => { 'since' => 0, 'until' => 23 } }
+    weekends_info = { $SATURDAY => { 'since' => $MIDNIGHT, 'until' => $NIGHT },
+                      $SUNDAY => { 'since' => $MIDNIGHT, 'until' => $NIGHT } }
     start = to_time(@start_date_time)
     finish = to_time(@end_date_time)
-    @weekend_minutes_call_duration = count_seconds(start, finish, weekends_info) / 60
+    @weekend_minutes_call_duration = count_seconds(start, finish, weekends_info) /
+                                     $ONE_MINUTE_IN_SECONDS
   end
 
   def week_call_duration
     start = to_time(@start_date_time)
     finish = to_time(@end_date_time)
-    @total_duration = (finish - start) / 60
+    @total_duration = (finish - start) / $ONE_MINUTE_IN_SECONDS
     @week_call_duration = @total_duration - @weekend_minutes_call_duration
   end
 end
