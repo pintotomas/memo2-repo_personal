@@ -6,7 +6,7 @@ class TuristaPhonePlan
   end
   attr_reader :base_cost
   attr_reader :name
-  def cost(_call)
-    3.2
+  def cost(call)
+    call.cost
   end
 end
