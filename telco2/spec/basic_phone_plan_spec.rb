@@ -10,4 +10,13 @@ describe 'BasicPhonePlan' do
   it 'cost of the plan should be 100' do
     expect(basic_phone_plan.base_cost).to eq 100
   end
+  context 'when making a local call' do
+    friend_phone_number = PhoneNumber.new('5401155556666')
+    start_date_time = DateTime.new(2019, 3, 11, 14)
+    end_date_time = DateTime.new(2019, 3, 11, 14, 1)
+    call_to_friend = LocalCall.new(friend_phone_number, start_date_time, end_date_time)
+    it 'cost of a call should not be affected' do
+      expect(basic_phone_plan.cost(call_to_friend)).to eq 3.2
+    end
+  end
 end

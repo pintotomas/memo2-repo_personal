@@ -5,4 +5,7 @@ class BasicPhonePlan
   end
   attr_reader :name
   attr_reader :base_cost
+  def cost(_call)
+    3.2
+  end
 end
