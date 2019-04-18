@@ -3,6 +3,7 @@ require_relative 'errors/wrong_argument_format'
 
 class PlansValidator
   VALID_PLANS = %w[amigos turista].freeze
+  VALID_COUNTRY_CODES = %w[52 55 39].freeze
   PHONE_FORMAT = /^\d{13,13}$/.freeze
 
   def validate_input(input)
@@ -34,5 +35,6 @@ class PlansValidator
 
   def validate_turista_plan_parameters(input)
     raise MissingArgumentError, 'Missing country code number parameter for turista plan' unless input.include?('pais')
+    raise WrongArgumentFormat, 'Wrong country code' unless VALID_COUNTRY_CODES.include? input['pais']
   end
 end

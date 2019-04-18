@@ -56,4 +56,13 @@ describe 'PlansValidator' do
       end.to raise_error(WrongArgumentFormat)
     end
   end
+
+  context 'when registering a tursita plan with invalid country code number' do
+    it 'raises wrong argument error' do
+      input = JSON.parse('{ "numero": "54 011 4444 1111", "plan": "turista", "pais":"12" }')
+      expect do
+        validator.validate_input(input)
+      end.to raise_error(WrongArgumentFormat)
+    end
+  end
 end
