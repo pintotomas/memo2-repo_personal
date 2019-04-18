@@ -17,6 +17,7 @@ class PhonesOrganizer
 
   def reset
     @phones.clear
+    @plans.clear
   end
 
   def register_plan(number, plan_name, plan_parameters)

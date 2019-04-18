@@ -12,7 +12,7 @@ class PlansParser
     new_turista_plan(client_organizer) if plan == 'turista'
   end
 
-  def old_plan(client_organizer)
+  def actual_plan(client_organizer)
     client_organizer.actual_plan(@input['numero'].delete(' '))
   end
 

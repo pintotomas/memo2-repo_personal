@@ -14,7 +14,7 @@ phone_organizer = PhonesOrganizer.new
 billing = Billing.new(phone_organizer)
 
 put '/numero' do
-  conten_type :json
+  content_type :json
 
   input = JSON.parse(request.body.read)
   parser = PlansParser.new(input)
