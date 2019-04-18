@@ -6,7 +6,8 @@ class NationalCall
   COST_PER_MINUTE = 1.5
 
   attr_reader :start_date_time
-
+  attr_reader :phone_number_destiny
+  
   def initialize(phone_number_destiny, start_date_time, end_date_time)
     @phone_number_destiny = phone_number_destiny
     @start_date_time = start_date_time
