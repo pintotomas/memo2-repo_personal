@@ -22,7 +22,7 @@ put '/numero' do
   parser.register_new_plan(phone_organizer)
   actual_plan = parser.actual_plan(phone_organizer)
   status 201
-  { numero: input['numero'], plan_actual: actual_plan, plan_anterior: old_plan }
+  { numero: input['numero'], plan_actual: actual_plan, plan_anterior: old_plan }.to_json
 end
 
 post '/llamadas' do
