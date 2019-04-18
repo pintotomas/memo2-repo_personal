@@ -1,3 +1,5 @@
+require_relative '../aux/functions'
+
 class NationalCall
   DAY_DURATION = 24
   HOUR_DURATION = 60
@@ -16,10 +18,6 @@ class NationalCall
   end
 
   def cost
-    if @call_duration > MAX_DURATION_MIN_COST
-      (@call_duration - MAX_DURATION_MIN_COST) * COST_PER_MINUTE + MINIMUM_COST
-    else
-      MINIMUM_COST
-    end
+    MINIMUM_COST + max((@call_duration - MAX_DURATION_MIN_COST) * COST_PER_MINUTE, 0)
   end
 end
