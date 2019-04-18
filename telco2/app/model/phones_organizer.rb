@@ -17,10 +17,10 @@ class PhonesOrganizer
     @phones.clear
   end
 
-  def register_plan(number, plan_name)
+  def register_plan(number, plan_name, plan_parameters)
     raise OnlyOnePlanPerPhone if @plans.key? number
 
     plans = { 'amigos' => FriendsPhonePlan }
-    @plans[number] = plans[plan_name].new
+    @plans[number] = plans[plan_name].new(plan_parameters)
   end
 end
