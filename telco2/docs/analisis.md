@@ -1,6 +1,7 @@
 ¿Cumple la consigna?
-Los test de fitnesse pasan, hizo pruebas (aunque no tengo manera de chequear si siguio TDD o no)
-que pasaban todas y abarcaban hasta casos borde como cambio de tarifas en horarios de llamadas
+  - Los test de fitnesse pasan, hizo pruebas (aunque no tengo manera de chequear si siguio TDD o no)
+    que pasaban todas y abarcaban hasta casos borde como cambio de tarifas en horarios de llamadas
+  - No incluye modelo (esta corrupto) ni diagrama de secuencia
 
 Helpers:
 
@@ -11,6 +12,7 @@ Analisis de cada clase del modelo:
 
 Billing: 
   - Esta bastante bien, cumple los principios solid. Lo unico que tengo para resaltar es que utiliza el costo basico como numero magico (100)
+  - Es medio extrano que al calcular el costo estemos llamando a un metodo find_or_CREATE_phone. Mas adelante vuelvo a hablar de esto.
 
 CallRegister:
   - Tiene la unica responsabilidad de registrar llamadas y filtrarlas por mes. No esta muy bueno el metodo has_calls? ya que rompe con el principio 'Tell, dont ask'. 
