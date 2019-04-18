@@ -25,4 +25,8 @@ class PhonesOrganizer
     plans = { 'amigos' => FriendsPhonePlan }
     @plans[number] = plans[plan_name].new(plan_parameters)
   end
+
+  def actual_plan(_phone_number)
+    'ninguno'
+  end
 end
