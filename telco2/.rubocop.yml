@@ -30,3 +30,5 @@ RSpec/ExampleLength:
   Max: 9
 EndOfLine:
   Enabled: false
+Style/GlobalVars:
+  Enabled: false
