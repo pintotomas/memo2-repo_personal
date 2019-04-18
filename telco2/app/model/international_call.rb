@@ -8,6 +8,7 @@ class InternationalCall
 
   attr_reader :start_date_time
   attr_reader :phone_number_destiny
+  attr_reader :total_duration
 
   def initialize(phone_number_destiny, start_date_time, end_date_time)
     @phone_number_destiny = phone_number_destiny
@@ -37,7 +38,7 @@ class InternationalCall
   def week_call_duration
     start = (@end_date_time + (3.0 / 24.0)).to_time
     finish = (@start_date_time + (3.0 / 24.0)).to_time
-    total_duration = (start - finish) / 60
-    @week_call_duration = total_duration - @weekend_minutes_call_duration
+    @total_duration = (start - finish) / 60
+    @week_call_duration = @total_duration - @weekend_minutes_call_duration
   end
 end

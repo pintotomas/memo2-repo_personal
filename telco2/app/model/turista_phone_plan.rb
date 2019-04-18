@@ -1,4 +1,7 @@
+require_relative '../aux/functions'
+
 class TuristaPhonePlan
+  MINUTE_COST = 1.5
   def initialize(country_code)
     @country_code = country_code
     @base_cost = 300
@@ -9,6 +12,7 @@ class TuristaPhonePlan
   def cost(call)
     return call.cost unless call.phone_number_destiny.country_code == @country_code
 
-    20
+    duration = call.total_duration
+    20 + max((duration - 5) * MINUTE_COST, 0)
   end
 end

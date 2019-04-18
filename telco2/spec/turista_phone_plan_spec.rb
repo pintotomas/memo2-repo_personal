@@ -45,7 +45,7 @@ describe 'TuristaPhonePlan' do
     end
   end
 
-  context 'when making an international call to the country covered by the plan' do
+  context 'when making an international call to the country covered by the plan (1 min)' do
     random = '5531403034567'
     start_date_time = DateTime.new(2019, 3, 11, 14)
     end_date_time = DateTime.new(2019, 3, 11, 14, 1)
@@ -53,6 +53,17 @@ describe 'TuristaPhonePlan' do
                                            start_date_time, end_date_time)
     it 'price of one minute call should be 20' do
       expect(plan.cost(call_to_random)).to eq 20
+    end
+  end
+
+  context 'when making an international call to the country covered by the plan (6 min)' do
+    random = '5531403034567'
+    start_date_time = DateTime.new(2019, 3, 11, 14, 10)
+    end_date_time = DateTime.new(2019, 3, 11, 14, 16)
+    call_to_random = InternationalCall.new(PhoneNumber.new(random),
+                                           start_date_time, end_date_time)
+    it 'price of a 6 minutes call should be 21.5' do
+      expect(plan.cost(call_to_random)).to eq 21.5
     end
   end
 end
