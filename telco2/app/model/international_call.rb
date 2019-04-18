@@ -37,9 +37,9 @@ class InternationalCall
   end
 
   def week_call_duration
-    start = (@end_date_time + (3.0 / 24.0)).to_time
-    finish = (@start_date_time + (3.0 / 24.0)).to_time
-    @total_duration = (start - finish) / 60
+    start = to_time(@start_date_time)
+    finish = to_time(@end_date_time)
+    @total_duration = (finish - start) / 60
     @week_call_duration = @total_duration - @weekend_minutes_call_duration
   end
 end
