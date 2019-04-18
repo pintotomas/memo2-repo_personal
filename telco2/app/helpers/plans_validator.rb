@@ -32,7 +32,7 @@ class PlansValidator
     friend_numbers.each do |number|
       raise WrongArgumentFormat, 'Wrong friend number format' unless number.match(PHONE_FORMAT)
       raise WrongArgumentFormat, 'Friends must be from the same country! (54)' unless
-      number[0..2] == ARG_CODE
+      number[0..1] == ARG_CODE
     end
   end
 
