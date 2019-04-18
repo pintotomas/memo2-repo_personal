@@ -14,8 +14,17 @@ describe 'Billing' do
       expect(billing.calculate_price(number, month)).to eq 100
     end
 
-    it 'call quantity of bill should be 100' do
+    it 'call quantity of bill should be 0' do
       expect(billing.call_quantity(number, month)).to eq 0
+    end
+  end
+
+  context 'when a number has no calls in the month and has an amigo suscription' do
+    it 'price of bill should be 200' do
+      phone_organizer.find_or_create_phone(number)
+      friends = ['5401168158752']
+      phone_organizer.register_plan(number, 'amigos', friends)
+      expect(billing.calculate_price(number, month)).to eq 200
     end
   end
 

@@ -1,6 +1,5 @@
 require 'rspec'
 require_relative '../app/model/phones_organizer'
-require_relative '../app/model/errors/only_one_plan_per_phone'
 describe 'PhoneOrganizer' do
   phone_organizer = PhonesOrganizer.new
 
