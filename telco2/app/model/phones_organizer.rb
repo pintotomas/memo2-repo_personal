@@ -26,7 +26,9 @@ class PhonesOrganizer
     @plans[number] = plans[plan_name].new(plan_parameters)
   end
 
-  def actual_plan(_phone_number)
-    'ninguno'
+  def actual_plan(phone_number)
+    return 'ninguno' unless @plans.key? phone_number
+
+    @plans[phone_number].name
   end
 end

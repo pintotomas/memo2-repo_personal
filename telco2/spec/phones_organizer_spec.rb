@@ -9,4 +9,11 @@ describe 'PhoneOrganizer' do
       expect(phone_organizer.actual_plan('5491103030404')).to eq 'ninguno'
     end
   end
+
+  context 'when registering a plan to a phone' do
+    it 'actual plan name should be amigos' do
+      phone_organizer.register_plan('5491103030404', 'amigos', %w[5401123234242 5401102020303])
+      expect(phone_organizer.actual_plan('5491103030404')).to eq 'amigos'
+    end
+  end
 end
